@@ -49,8 +49,6 @@ class ExitAppHeader extends StatelessWidget {
 
 //============== Step Bar (Progress indicator ) =================
 
-
-
 class ExitStepBar extends StatelessWidget {
   final int currentStep;
   final int totalSteps;
@@ -84,7 +82,6 @@ class ExitStepBar extends StatelessWidget {
                   color: ExitColors.text,
                 ),
               ),
-          
 
               Text(
                 '${currentStep + 1} of $totalSteps',
@@ -117,11 +114,123 @@ class ExitStepBar extends StatelessWidget {
               );
             }),
           ),
-
-          
         ],
       ),
     );
   }
 }
 
+//============== Section Header (badge + title + line) ================
+
+class ExitSectionHeader extends StatelessWidget {
+  final String badge;
+  final String title;
+
+  const ExitSectionHeader({
+    super.key,
+    required this.badge,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 14.h),
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
+
+            decoration: BoxDecoration(
+              color: ExitColors.navy,
+              borderRadius: BorderRadius.circular(4.r),
+            ),
+            child: Text(
+              badge,
+              style: GoogleFonts.dmSans(
+                fontSize: 10.sp,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.8,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          SizedBox(width: 8.w),
+          Text(
+            title,
+            style: GoogleFonts.dmSans(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w600,
+              color: ExitColors.text,
+            ),
+          ),
+          SizedBox(width: 8.w),
+          Expanded(child: Container(height: 1, color: ExitColors.border)),
+        ],
+      ),
+    );
+  }
+}
+
+//============ CARD CONTAINER ======================
+class ExitCard extends StatelessWidget {
+  final Widget child;
+  final EdgeInsets? padding;
+  const ExitCard({super.key, required this.child, this.padding});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+   width:double.infinity,
+   margin:EdgeInsets.only(bottom: 10.h),
+   padding: padding ?? EdgeInsets.all(14.w),
+   decoration: BoxDecoration(
+    color:ExitColors.surface,
+    borderRadius: BorderRadius.circular(16.r),
+    border:Border.all(color:ExitColors.border),
+   ),
+child: child,
+
+
+
+
+
+    );
+  }
+}
+
+
+class ExitAutoFilledBadge extends StatelessWidget {
+  const ExitAutoFilledBadge({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin:EdgeInsets.only(bottom:10.h),
+      padding:EdgeInsets.symmetric(horizontal: 8.w,vertical:2.h ),
+      decoration: BoxDecoration(
+        color:ExitColors.autoBadgeBg,
+        borderRadius: BorderRadius.circular(20.r),
+        border:Border.all(color:ExitColors.autoBadgeBorder),
+      ),
+child: Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+const Icon(Icons.check_circle_outline_rounded,
+size: 12,
+color:ExitColors.autoBadgeFg),
+SizedBox(width: 4.w,),
+Text('Auto-Filled from system',
+style: GoogleFonts.dmSans(
+fontSize: 10.sp,
+fontWeight: FontWeight.w600,
+letterSpacing:0.5,
+color:ExitColors.autoBadgeFg
+
+
+),)
+],),
+    );
+  }
+}
