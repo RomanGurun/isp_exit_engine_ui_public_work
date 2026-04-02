@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../exit_theme.dart';
 import '../widgets/exit_widgets.dart';
 import 'package:flutter/services.dart';
+import 'exit_page_employee_info.dart';
 
 class ExitFormScreen extends StatefulWidget {
   const ExitFormScreen({super.key});
@@ -11,33 +12,86 @@ class ExitFormScreen extends StatefulWidget {
 }
 
 class _ExitFormScreenState extends State<ExitFormScreen> {
-  int _currentState = 0;
+  int _currentStep = 0;
   final int _totalSteps = exitSteps.length;
+
+  // ==============Page Controller =================
+  final _pageCtrl = PageController();
+
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-backgroundColor: ExitColors.bg,
-body:Column(children: [
-//============== Fixed Header =====================
-const ExitAppHeader(),
+    return Scaffold(
+      backgroundColor: ExitColors.bg,
+      body: Column(
+        children: [
+          //============== Fixed Header =====================
+          const ExitAppHeader(),
 
-//================ Step bar ========================
+          //================ Step bar ========================
+          ExitStepBar(
+            currentStep: _currentStep,
+            totalSteps: _totalSteps,
+            stepLabel: exitSteps[_currentStep],
+          ),
 
-// ExitStepBar(
-//   currentStep: _currentStep, 
-//   totalSteps : _totalSteps,
-//   stepLabel : exitSeps[_currentStep],
+          //======================= Pages ========================
+          Expanded(
+            child: Stack(
+              children: [
+                PageView(
+                  controller: _pageCtrl,
+                  physics: const NeverScrollableScrollPhysics(),
+  children: [
+      
+      // Page 1
+      const ExitPageEmployeeInfo(),
+// Page 2 
+// ExitPageReasons(
+//   selectedReasons:_selectedReasons,
+//   onChanged:(v) => setState(() => _selectedReasons = v),
+//   otherController : _otherReasonCtrl,
 
-// ),
+// )
+
+
+// Page 4
+// ExitPageFeedback(
+//   controller:_feedbackControllers
+// )
 
 
 
 
-],)
+
+  ],
+                ),
+
+// Toast Overalay
+// ExitToast(message:_toastMessage ,visible : _toastVisible),
 
 
 
+              ],
+            ),
+          ),
+
+
+// =================Nav Footer =============
+
+
+// ExitNavFooter(
+
+//   showBack:_currentStep > 0 && !_submitted,
+//   onBack : _goBack,
+//   onNext:_goNext,
+//   nextStyle:_nextButtonStyle,
+//   loading:_loading,
+// )
+
+
+        ],
+      ),
     );
   }
 }

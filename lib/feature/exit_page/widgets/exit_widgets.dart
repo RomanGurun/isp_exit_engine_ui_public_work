@@ -47,8 +47,11 @@ class ExitAppHeader extends StatelessWidget {
   }
 }
 
-class ExitStepBar extends StatelessWidget {
+//============== Step Bar (Progress indicator ) =================
 
+
+
+class ExitStepBar extends StatelessWidget {
   final int currentStep;
   final int totalSteps;
   final String stepLabel;
@@ -62,6 +65,63 @@ class ExitStepBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      padding: EdgeInsets.fromLTRB(20.2, 12.h, 20.w, 10.h),
+      decoration: BoxDecoration(
+        color: ExitColors.surface,
+        border: Border(bottom: BorderSide(color: ExitColors.border)),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                stepLabel,
+                style: GoogleFonts.dmSans(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600,
+                  color: ExitColors.text,
+                ),
+              ),
+          
+
+              Text(
+                '${currentStep + 1} of $totalSteps',
+                style: GoogleFonts.dmSans(
+                  fontSize: 11.sp,
+                  color: ExitColors.textMuted,
+                ),
+              ),
+            ],
+          ),
+
+          SizedBox(height: 10.h),
+          Row(
+            children: List.generate(totalSteps, (i) {
+              final isDone = i < currentStep;
+              final isActive = i == currentStep;
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                width: isActive ? 22.w : 6.w,
+                height: 6.h,
+                margin: EdgeInsets.only(right: 6.w),
+                decoration: BoxDecoration(
+                  color: isDone
+                      ? const Color(0xFF1D6FBF)
+                      : isActive
+                      ? ExitColors.blue
+                      : ExitColors.border,
+                  borderRadius: BorderRadius.circular(3.r),
+                ),
+              );
+            }),
+          ),
+
+          
+        ],
+      ),
+    );
   }
 }
+
