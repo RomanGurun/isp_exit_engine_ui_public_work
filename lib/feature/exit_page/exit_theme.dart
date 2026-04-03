@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 //=============== COLORS =========================
 class ExitColors {
+  static const pureBlack = Colors.black;
+  
   static const navy = Color(0xFF0A1628);
   static const blue = Color(0xFF1D6FBF);
   static const blueLight = Color(0xFFEBF3FC);
@@ -149,14 +151,12 @@ const exitRatingExpects = [
 ];
 
 const exitFeedbackQuestions = [
-'What did you enjoy most about working as field staff at our ISP?',
-'What were the biggest challenges in the field? (site access,equipment,safety,dispatch)',
- 'Were you adequately equipped & trained to handle technical field issues?',
+  'What did you enjoy most about working as field staff at our ISP?',
+  'What were the biggest challenges in the field? (site access,equipment,safety,dispatch)',
+  'Were you adequately equipped & trained to handle technical field issues?',
   'How would you describe NOC/helpdesk support when you faced issues in the field?',
   'Did you feel safe working in field conditions? What improvements would you suggest?',
   'What would make our ISP a better place for field technicians?',
   'Would you return to work here if given the chance? Why / why not?',
   'Any additional comments or suggestions for management:',
-
-
 ];

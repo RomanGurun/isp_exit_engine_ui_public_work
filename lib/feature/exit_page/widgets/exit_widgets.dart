@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -237,73 +238,159 @@ class ExitReadOnlyField extends StatelessWidget {
   final String label;
   final String value;
 
-  const ExitReadOnlyField({super.key,
-  required this.label,
-  required this.value
-  
+  const ExitReadOnlyField({
+    super.key,
+    required this.label,
+    required this.value,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-Text(
-  label.toUpperCase(),
-  style:GoogleFonts.dmSans(
-    fontSize: 10.5.sp,
-    fontWeight: FontWeight.w600,
-    letterSpacing:0.4,
-    color:ExitColors.textMuted,
-
-  )
-),
-SizedBox(height:5.h),
-Container(
-  width: double.infinity,
-  padding: EdgeInsets.symmetric(horizontal: 11.w,
-  vertical: 9.h),
-decoration: BoxDecoration(
-  color:ExitColors.bg,
-  borderRadius: BorderRadius.circular(10.r),
-  border:Border.all(color:ExitColors.border),
-
-),
-child:Text(value,
-style: GoogleFonts.dmSans(
-  fontSize: 14.sp,
-  color:ExitColors.text.withOpacity(0.75),
-
-),)
-
-)
-
-
-
-    ],);
-  }
-}
-
-
-
-
-
-// NAV FOOTER (Back + Next/Submit)
-enum ExitNavButtonStyle{
-  normal,submit ,
-  success
-}
-
-class ExitNavFooter extends StatelessWidget {
-  const ExitNavFooter({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: null,
+        Text(
+          label.toUpperCase(),
+          style: GoogleFonts.dmSans(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.4,
+            color: ExitColors.pureBlack,
+          ),
+        ),
+        SizedBox(height: 5.h),
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: 11.w, vertical: 9.h),
+          decoration: BoxDecoration(
+            color: ExitColors.bg,
+            borderRadius: BorderRadius.circular(10.r),
+            border: Border.all(color: ExitColors.border),
+          ),
+          child: Text(
+            value,
+            style: GoogleFonts.dmSans(
+              fontSize: 14.sp,
+              color: ExitColors.pureBlack,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
 
+// NAV FOOTER (Back + Next/Submit)
+enum ExitNavButtonStyle { normal, submit, success }
 
+class ExitNavFooter extends StatelessWidget {
+  final bool showBack;
+  final VoidCallback onBack;
+  final VoidCallback onNext;
+  final ExitNavButtonStyle nextStyle;
+  final bool loading;
+
+  const ExitNavFooter({
+    super.key,
+    required this.showBack,
+    required this.onBack,
+    required this.onNext,
+    this.nextStyle = ExitNavButtonStyle.normal,
+    this.loading = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    String nextLabel;
+    Color nextColor;
+    switch (nextStyle) {
+      case ExitNavButtonStyle.submit:
+        nextLabel = 'Submit Form';
+        nextColor = ExitColors.blue;
+        break;
+
+      case ExitNavButtonStyle.success:
+        nextLabel = "✓ Done ";
+        nextColor = ExitColors.green;
+        break;
+      case ExitNavButtonStyle.normal:
+        nextLabel = loading ? 'Submitting...' : 'Next →';
+        nextColor = ExitColors.navy;
+        break;
+    }
+
+    return Container(
+padding: EdgeInsets.fromLTRB(16.w, 12.h,
+ 16.w, 12.h + MediaQuery.of(context).padding.bottom),
+decoration: BoxDecoration(
+  color:ExitColors.surface,
+  border:Border(top:BorderSide(color:ExitColors.border ))
+),
+child:Row(
+  children: [
+if(showBack)...[
+  Expanded(child: GestureDetector(
+    onTap: onBack,
+    child: Container(
+      padding:EdgeInsets.symmetric(vertical:13.h),
+      decoration: BoxDecoration(
+        color:Colors.transparent,
+        borderRadius: BorderRadius.circular(16.r),
+        border:Border.all(color:ExitColors.borderMed),
+
+      ),
+      child:Center(child: Text(
+       '← Back',
+       style:GoogleFonts.dmSans(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.bold,
+        color: ExitColors.textMuted
+       ) 
+      ),)
+    ),
+  ),),
+
+  SizedBox(width: 10.w,),
+],
+Expanded(flex:2,
+child: GestureDetector(
+  onTap:nextStyle == ExitNavButtonStyle.success || loading ? null
+  : onNext, 
+  child:Container(
+    padding: EdgeInsets.symmetric(vertical:13.h ),
+    decoration: BoxDecoration(
+      color:nextColor,
+      borderRadius: BorderRadius.circular(16.r),
+
+    ),
+    child:Center(
+      child:loading ? SizedBox(
+        height: 18.w,
+        width:18.w,
+        child: const CircularProgressIndicator(
+          color:Colors.white,
+          strokeWidth:2 ,
+        ),
+      ):Text(
+        nextLabel,
+        style:GoogleFonts.dmSans(
+          fontSize:14.sp,
+          fontWeight: FontWeight.bold,
+          color:Colors.white,
+        )
+      )
+    )
+  )
+),)
+
+
+
+
+],)
+    );
+
+
+
+
+  }
+}

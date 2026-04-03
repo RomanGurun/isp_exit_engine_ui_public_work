@@ -15,9 +15,50 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   int _currentStep = 0;
   final int _totalSteps = exitSteps.length;
 
+
+
+
+
+
+
+
   // ==============Page Controller =================
   final _pageCtrl = PageController();
 
+  //=========== submission ====================
+  bool _submitted = false;
+
+//====================== Validation ===============================
+
+bool _validateCurrent(){
+  if(_currentStep == 1 && _selectedReasons.isEmpty){
+
+    _showToast('Please select at least one reason for leaving ')
+  }
+}
+
+
+
+
+//========================= Navigation =======================
+  void _goBack() {
+    if (_currentStep == 0) return;
+    setState(() => _currentStep--);
+    _pageCtrl.animateToPage(
+      _currentStep,
+      duration: const Duration(milliseconds: 280),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void _goNext() async {
+    if (_validateCurrent()) return;
+    if (_currentStep == _totalSteps - 1) {
+      await _submitForm();
+      return;
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,54 +83,39 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
                 PageView(
                   controller: _pageCtrl,
                   physics: const NeverScrollableScrollPhysics(),
-  children: [
-      
-      // Page 1
-      const ExitPageEmployeeInfo(),
-// Page 2 
-// ExitPageReasons(
-//   selectedReasons:_selectedReasons,
-//   onChanged:(v) => setState(() => _selectedReasons = v),
-//   otherController : _otherReasonCtrl,
+                  children: [
+                    // Page 1
+                    const ExitPageEmployeeInfo(),
 
-// )
+                    // Page 2
+                    // ExitPageReasons(
+                    //   selectedReasons:_selectedReasons,
+                    //   onChanged:(v) => setState(() => _selectedReasons = v),
+                    //   otherController : _otherReasonCtrl,
 
+                    // )
 
-// Page 4
-// ExitPageFeedback(
-//   controller:_feedbackControllers
-// )
-
-
-
-
-
-  ],
+                    // Page 4
+                    // ExitPageFeedback(
+                    //   controller:_feedbackControllers
+                    // )
+                  ],
                 ),
 
-// Toast Overalay
-// ExitToast(message:_toastMessage ,visible : _toastVisible),
-
-
-
+                // Toast Overalay
+                // ExitToast(message:_toastMessage ,visible : _toastVisible),
               ],
             ),
           ),
 
-
-// =================Nav Footer =============
-
-
-// ExitNavFooter(
-
-//   showBack:_currentStep > 0 && !_submitted,
-//   onBack : _goBack,
-//   onNext:_goNext,
-//   nextStyle:_nextButtonStyle,
-//   loading:_loading,
-// )
-
-
+          // =================Nav Footer =============
+          // ExitNavFooter(
+          //   showBack: _currentStep > 0 && !_submitted,
+          //   onBack: _goBack,
+          //   onNext: _goNext,
+          //   nextStyle: _nextButtonStyle,
+          //   loading: _loading,
+          // ),
         ],
       ),
     );
