@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 //=============== COLORS =========================
 class ExitColors {
   static const pureBlack = Colors.black;
-  
+  static const g8 = Color(0xFF1A6B2F);
   static const navy = Color(0xFF0A1628);
   static const blue = Color(0xFF1D6FBF);
   static const blueLight = Color(0xFFEBF3FC);

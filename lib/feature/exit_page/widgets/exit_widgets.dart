@@ -271,6 +271,7 @@ class ExitReadOnlyField extends StatelessWidget {
             value,
             style: GoogleFonts.dmSans(
               fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
               color: ExitColors.pureBlack,
             ),
           ),

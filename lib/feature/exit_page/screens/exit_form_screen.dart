@@ -15,8 +15,9 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   int _currentStep = 0;
   final int _totalSteps = exitSteps.length;
 
-
-
+//================= Page 2 : Reasons =========================
+Set<String> _selectedReasons = {};
+final _otherReasonCtrl = TextEditingController();
 
 
 
@@ -30,12 +31,12 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
 
 //====================== Validation ===============================
 
-bool _validateCurrent(){
-  if(_currentStep == 1 && _selectedReasons.isEmpty){
+// bool _validateCurrent(){
+//   if(_currentStep == 1 && _selectedReasons.isEmpty){
 
-    _showToast('Please select at least one reason for leaving ')
-  }
-}
+//     _showToast('Please select at least one reason for leaving ')
+//   }
+// }
 
 
 
@@ -51,14 +52,14 @@ bool _validateCurrent(){
     );
   }
 
-  void _goNext() async {
-    if (_validateCurrent()) return;
-    if (_currentStep == _totalSteps - 1) {
-      await _submitForm();
-      return;
+  // void _goNext() async {
+  //   if (_validateCurrent()) return;
+  //   if (_currentStep == _totalSteps - 1) {
+  //     await _submitForm();
+  //     return;
 
-    }
-  }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
