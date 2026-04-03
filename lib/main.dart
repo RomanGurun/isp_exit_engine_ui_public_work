@@ -16,7 +16,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(home: child, debugShowCheckedModeBanner: false);
+        return MaterialApp(home: child, debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.light,
+        darkTheme: ThemeData.light(),
+        theme: ThemeData.light(),
+        color: Colors.white,
+        );
       },
       child: ExitFormScreen(),
     );

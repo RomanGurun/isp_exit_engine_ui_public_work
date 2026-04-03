@@ -178,28 +178,21 @@ class ExitCard extends StatelessWidget {
   final EdgeInsets? padding;
   const ExitCard({super.key, required this.child, this.padding});
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
-   width:double.infinity,
-   margin:EdgeInsets.only(bottom: 10.h),
-   padding: padding ?? EdgeInsets.all(14.w),
-   decoration: BoxDecoration(
-    color:ExitColors.surface,
-    borderRadius: BorderRadius.circular(16.r),
-    border:Border.all(color:ExitColors.border),
-   ),
-child: child,
-
-
-
-
-
+      width: double.infinity,
+      margin: EdgeInsets.only(bottom: 10.h),
+      padding: padding ?? EdgeInsets.all(14.w),
+      decoration: BoxDecoration(
+        color: ExitColors.surface,
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: ExitColors.border),
+      ),
+      child: child,
     );
   }
 }
-
 
 class ExitAutoFilledBadge extends StatelessWidget {
   const ExitAutoFilledBadge({Key? key}) : super(key: key);
@@ -207,30 +200,87 @@ class ExitAutoFilledBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:EdgeInsets.only(bottom:10.h),
-      padding:EdgeInsets.symmetric(horizontal: 8.w,vertical:2.h ),
+      margin: EdgeInsets.only(bottom: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
       decoration: BoxDecoration(
-        color:ExitColors.autoBadgeBg,
+        color: ExitColors.autoBadgeBg,
         borderRadius: BorderRadius.circular(20.r),
-        border:Border.all(color:ExitColors.autoBadgeBorder),
+        border: Border.all(color: ExitColors.autoBadgeBorder),
       ),
-child: Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-const Icon(Icons.check_circle_outline_rounded,
-size: 12,
-color:ExitColors.autoBadgeFg),
-SizedBox(width: 4.w,),
-Text('Auto-Filled from system',
-style: GoogleFonts.dmSans(
-fontSize: 10.sp,
-fontWeight: FontWeight.w600,
-letterSpacing:0.5,
-color:ExitColors.autoBadgeFg
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.check_circle_outline_rounded,
+            size: 12,
+            color: ExitColors.autoBadgeFg,
+          ),
+          SizedBox(width: 4.w),
+          Text(
+            'Auto-Filled from system',
+            style: GoogleFonts.dmSans(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.5,
+              color: ExitColors.autoBadgeFg,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
+//============== Read Only Field (Auto filled from System) =========================
+
+class ExitReadOnlyField extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const ExitReadOnlyField({super.key,
+  required this.label,
+  required this.value
+  
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+Text(
+  label.toUpperCase(),
+  style:GoogleFonts.dmSans(
+    fontSize: 10.5.sp,
+    fontWeight: FontWeight.w600,
+    letterSpacing:0.4,
+    color:ExitColors.textMuted,
+
+  )
+),
+SizedBox(height:5.h),
+Container(
+  width: double.infinity,
+  padding: EdgeInsets.symmetric(horizontal: 11.w,
+  vertical: 9.h),
+decoration: BoxDecoration(
+  color:ExitColors.bg,
+  borderRadius: BorderRadius.circular(10.r),
+  border:Border.all(color:ExitColors.border),
+
+),
+child:Text(value,
+style: GoogleFonts.dmSans(
+  fontSize: 14.sp,
+  color:ExitColors.text.withOpacity(0.75),
 
 ),)
-],),
-    );
+
+)
+
+
+
+    ],);
   }
 }

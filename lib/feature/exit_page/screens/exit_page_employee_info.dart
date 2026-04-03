@@ -26,20 +26,31 @@ class ExitPageEmployeeInfo extends StatelessWidget {
               children: [
                 const ExitAutoFilledBadge(),
 
-                // _FieldRow(children:[
-                // ExitReadOnlyField(label:'Employee Name', value:e.name),
+                _FieldRow(children:[
+                ExitReadOnlyField(label:'Employee Name', value:e.name),
 
-                // ExitReadOnlyField(label:'Employee Id',value:e.employeeId),
-                // ]),
-                // SizedBox(height: 12.h,),
-                // _FieldRow(children:[
-                // ExitReadOnlyField(label:'Job Title', value:e.jobTitle),
-                // ExitReadOnlyField(label:'Department',value:e.department),
+                ExitReadOnlyField(label:'Employee Id',value:e.employeeId),
+                ]),
+                SizedBox(height: 12.h,),
+                _FieldRow(children:[
+                ExitReadOnlyField(label:'Job Title', value:e.jobTitle),
+                ExitReadOnlyField(label:'Department',value:e.department),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _FiledRow extends StatelessWidget {
+  const _FiledRow({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: null,
     );
   }
 }
