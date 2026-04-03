@@ -284,3 +284,26 @@ style: GoogleFonts.dmSans(
     ],);
   }
 }
+
+
+
+
+
+// NAV FOOTER (Back + Next/Submit)
+enum ExitNavButtonStyle{
+  normal,submit ,
+  success
+}
+
+class ExitNavFooter extends StatelessWidget {
+  const ExitNavFooter({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: null,
+    );
+  }
+}
+
+
