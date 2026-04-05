@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_reasons.dart';
 import '../exit_theme.dart';
 import '../widgets/exit_widgets.dart';
 import 'package:flutter/services.dart';
@@ -19,16 +20,31 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   bool _toastVisible = false;
   String _toastMessage = '';
 
-  
-
   //================= Page 2 : Reasons =========================
   Set<String> _selectedReasons = {};
   final _otherReasonCtrl = TextEditingController();
 
+// ==========Page:4 Feedback =================
+late List<TextEditingController> _feedbackControllers;
+
+
+
+
+
+//============== Page 3: Ratings ==========================
+// Map of aspect -> rating(0 = unrated)
+late Map<String,int> _ratings;
+
+
+
   // ==============Page Controller =================
   final _pageCtrl = PageController();
 
+  // ==============Page 5: Signature
+  bool _signed = false;
+
   //=========== submission ====================
+  bool _loading = false;
   bool _submitted = false;
 
   //====================== Validation ===============================
@@ -38,6 +54,11 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
       _showToast('Please select at least one reason for leaving ');
       return false;
     }
+    if (_currentStep == 4 && !_signed) {
+      _showToast('Please sign before submitting');
+      return false;
+    }
+    return true;
   }
 
   //===================== Toast =======================
@@ -49,6 +70,7 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) setState(() => _toastVisible = false);
   }
+
 
   //========================= Navigation =======================
   void _goBack() {
@@ -75,8 +97,52 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
     );
   }
 
+
+  Future<void> _submitForm() async {
+    setState(() => _loading = true);
+
+    await Future.delayed(const Duration(milliseconds: 1200));
+    if (mounted) {
+      setState(() {
+        _loading = false;
+        _submitted = true;
+      });
+      _showToast('Exit interview submitted');
+    }
+  }
+
+  // Build payload for API - wire to model layer
+  Map<String, dynamic> _buildPayload() {
+    return {
+'employee':{
+  'id':dummyEmployee.employeeId,
+  'name':dummyEmployee.name
+},
+'reasons':_selectedReasons.toList(),
+'otherReason':_otherReasonCtrl.text,
+'ratings': _ratings,
+'feedback':{
+  for(var i = 0;i< exitFeedbackQuestions.length;i++)
+    'q ${i+1}': _feedbackControllers[i].text,
+
+  
+},
+'signed':_signed,
+'submittedAt' : DateTime.now().toIso8601String(),
+    };                                    
+  }
+
+  ExitNavButtonStyle get _nextButtonStyle {
+    if (_submitted) return ExitNavButtonStyle.success;
+    if (_currentStep == _totalSteps - 1) return ExitNavButtonStyle.submit;
+
+    return ExitNavButtonStyle.normal;
+  }
+
   @override
   Widget build(BuildContext context) {
+    //  SystemChrom.setSystem
+
     return Scaffold(
       backgroundColor: ExitColors.bg,
       body: Column(
@@ -103,12 +169,12 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
                     const ExitPageEmployeeInfo(),
 
                     // Page 2
-                    // ExitPageReasons(
-                    //   selectedReasons:_selectedReasons,
-                    //   onChanged:(v) => setState(() => _selectedReasons = v),
-                    //   otherController : _otherReasonCtrl,
+                    ExitPageReasons(
+                      selectedReasons:_selectedReasons,
+                      onChanged:(v) => setState(() => _selectedReasons = v),
+                      otherController : _otherReasonCtrl,
 
-                    // )
+                    ),  
 
                     // Page 4
                     // ExitPageFeedback(
@@ -124,13 +190,13 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
           ),
 
           // =================Nav Footer =============
-          // ExitNavFooter(
-          //   showBack: _currentStep > 0 && !_submitted,
-          //   onBack: _goBack,
-          //   onNext: _goNext,
-          //   nextStyle: _nextButtonStyle,
-          //   loading: _loading,
-          // ),
+          ExitNavFooter(
+            showBack: _currentStep > 0 && !_submitted,
+            onBack: _goBack,
+            onNext: _goNext,
+            nextStyle: _nextButtonStyle,
+            loading: _loading,
+          ),
         ],
       ),
     );
