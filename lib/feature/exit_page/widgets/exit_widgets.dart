@@ -12,7 +12,7 @@ class ExitAppHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: ExitColors.navy,
+      color: ExitColors.g8,
       child: SafeArea(
         bottom: false,
         child: Padding(
@@ -24,10 +24,11 @@ class ExitAppHeader extends StatelessWidget {
               Text(
                 'ISP Company',
                 style: GoogleFonts.dmSans(
-                  fontSize: 10.sp,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 1.6,
-                  color: const Color(0xFF5B9BD5),
+                  // color: const Color(0xFF5B9BD5),
+                  color:ExitColors.pureWhite
                 ),
               ),
               SizedBox(height: 3.h),
@@ -68,7 +69,7 @@ class ExitStepBar extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(20.2, 12.h, 20.w, 10.h),
       decoration: BoxDecoration(
         color: ExitColors.surface,
-        border: Border(bottom: BorderSide(color: ExitColors.border)),
+        border: Border(bottom: BorderSide(color: ExitColors.g8)),
       ),
       child: Column(
         children: [
@@ -78,7 +79,7 @@ class ExitStepBar extends StatelessWidget {
               Text(
                 stepLabel,
                 style: GoogleFonts.dmSans(
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: ExitColors.text,
                 ),
@@ -87,8 +88,9 @@ class ExitStepBar extends StatelessWidget {
               Text(
                 '${currentStep + 1} of $totalSteps',
                 style: GoogleFonts.dmSans(
-                  fontSize: 11.sp,
-                  color: ExitColors.textMuted,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  color: ExitColors.pureBlack,
                 ),
               ),
             ],
@@ -101,14 +103,14 @@ class ExitStepBar extends StatelessWidget {
               final isActive = i == currentStep;
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
-                width: isActive ? 22.w : 6.w,
-                height: 6.h,
+                width: isActive ? 23.w : 6.w,
+                height: 7.h,
                 margin: EdgeInsets.only(right: 6.w),
                 decoration: BoxDecoration(
                   color: isDone
                       ? const Color(0xFF1D6FBF)
                       : isActive
-                      ? ExitColors.blue
+                      ? ExitColors.g8
                       : ExitColors.border,
                   borderRadius: BorderRadius.circular(3.r),
                 ),
@@ -140,16 +142,16 @@ class ExitSectionHeader extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 7.h),
 
             decoration: BoxDecoration(
-              color: ExitColors.navy,
+              color: ExitColors.g8,
               borderRadius: BorderRadius.circular(4.r),
             ),
             child: Text(
               badge,
               style: GoogleFonts.dmSans(
-                fontSize: 10.sp,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 letterSpacing: 0.8,
                 color: Colors.white,
@@ -160,7 +162,7 @@ class ExitSectionHeader extends StatelessWidget {
           Text(
             title,
             style: GoogleFonts.dmSans(
-              fontSize: 14.sp,
+              fontSize: 15.sp,
               fontWeight: FontWeight.w600,
               color: ExitColors.text,
             ),
@@ -204,26 +206,26 @@ class ExitAutoFilledBadge extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 10.h),
       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
       decoration: BoxDecoration(
-        color: ExitColors.autoBadgeBg,
+        color: ExitColors.pureWhite,
         borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: ExitColors.autoBadgeBorder),
+        border: Border.all(color: ExitColors.g8),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           const Icon(
             Icons.check_circle_outline_rounded,
-            size: 12,
-            color: ExitColors.autoBadgeFg,
+            size: 19,
+            color: ExitColors.g8,
           ),
           SizedBox(width: 4.w),
           Text(
             'Auto-Filled from system',
             style: GoogleFonts.dmSans(
-              fontSize: 10.sp,
+              fontSize: 12.5.sp,
               fontWeight: FontWeight.w600,
               letterSpacing: 0.5,
-              color: ExitColors.autoBadgeFg,
+              color: ExitColors.g8,
             ),
           ),
         ],
@@ -316,7 +318,7 @@ class ExitNavFooter extends StatelessWidget {
         break;
       case ExitNavButtonStyle.normal:
         nextLabel = loading ? 'Submitting...' : 'Next →';
-        nextColor = ExitColors.navy;
+        nextColor = ExitColors.g8;
         break;
     }
 
@@ -345,7 +347,7 @@ if(showBack)...[
        style:GoogleFonts.dmSans(
         fontSize: 14.sp,
         fontWeight: FontWeight.bold,
-        color: ExitColors.textMuted
+        color: ExitColors.pureBlack
        ) 
       ),)
     ),
