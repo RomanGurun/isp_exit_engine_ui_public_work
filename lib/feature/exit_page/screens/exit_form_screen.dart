@@ -15,13 +15,15 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   int _currentStep = 0;
   final int _totalSteps = exitSteps.length;
 
-//================= Page 2 : Reasons =========================
-Set<String> _selectedReasons = {};
-final _otherReasonCtrl = TextEditingController();
+  // ==============Toast =========================
+  bool _toastVisible = false;
+  String _toastMessage = '';
 
+  
 
-
-
+  //================= Page 2 : Reasons =========================
+  Set<String> _selectedReasons = {};
+  final _otherReasonCtrl = TextEditingController();
 
   // ==============Page Controller =================
   final _pageCtrl = PageController();
@@ -29,19 +31,26 @@ final _otherReasonCtrl = TextEditingController();
   //=========== submission ====================
   bool _submitted = false;
 
-//====================== Validation ===============================
+  //====================== Validation ===============================
 
-// bool _validateCurrent(){
-//   if(_currentStep == 1 && _selectedReasons.isEmpty){
+  bool _validateCurrent() {
+    if (_currentStep == 1 && _selectedReasons.isEmpty) {
+      _showToast('Please select at least one reason for leaving ');
+      return false;
+    }
+  }
 
-//     _showToast('Please select at least one reason for leaving ')
-//   }
-// }
+  //===================== Toast =======================
+  void _showToast(String msg) async {
+    setState(() {
+      _toastMessage = msg;
+      _toastVisible = true;
+    });
+    await Future.delayed(const Duration(seconds: 3));
+    if (mounted) setState(() => _toastVisible = false);
+  }
 
-
-
-
-//========================= Navigation =======================
+  //========================= Navigation =======================
   void _goBack() {
     if (_currentStep == 0) return;
     setState(() => _currentStep--);
@@ -52,14 +61,19 @@ final _otherReasonCtrl = TextEditingController();
     );
   }
 
-  // void _goNext() async {
-  //   if (_validateCurrent()) return;
-  //   if (_currentStep == _totalSteps - 1) {
-  //     await _submitForm();
-  //     return;
-
-  //   }
-  // }
+  void _goNext() async {
+    if (!_validateCurrent()) return;
+    if (_currentStep == _totalSteps - 1) {
+      await _submitForm();
+      return;
+    }
+    setState(() => _currentStep++);
+    _pageCtrl.animateToPage(
+      _currentStep,
+      duration: const Duration(milliseconds: 280),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
