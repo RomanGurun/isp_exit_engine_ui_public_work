@@ -48,7 +48,15 @@ ExitCard(child: Column(children: [
   onToggled:(v) => _toggle(r,v),
 
 
-))
+)),
+SizedBox(height: 10.h,),
+  
+  ExitTextField(
+  label:'Other - specify',
+  controller:widget.otherController,
+  hint:'Describe your reason ...',
+),
+
 ],),)
 
 

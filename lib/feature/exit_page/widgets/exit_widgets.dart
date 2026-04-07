@@ -28,7 +28,7 @@ class ExitAppHeader extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   letterSpacing: 1.6,
                   // color: const Color(0xFF5B9BD5),
-                  color:ExitColors.pureWhite
+                  color: ExitColors.pureWhite,
                 ),
               ),
               SizedBox(height: 3.h),
@@ -323,77 +323,193 @@ class ExitNavFooter extends StatelessWidget {
     }
 
     return Container(
-padding: EdgeInsets.fromLTRB(16.w, 12.h,
- 16.w, 12.h + MediaQuery.of(context).padding.bottom),
+      padding: EdgeInsets.fromLTRB(
+        16.w,
+        12.h,
+        16.w,
+        12.h + MediaQuery.of(context).padding.bottom,
+      ),
+      decoration: BoxDecoration(
+        color: ExitColors.surface,
+        border: Border(top: BorderSide(color: ExitColors.border)),
+      ),
+      child: Row(
+        children: [
+          if (showBack) ...[
+            Expanded(
+              child: GestureDetector(
+                onTap: onBack,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 13.h),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(16.r),
+                    border: Border.all(color: ExitColors.borderMed),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '← Back',
+                      style: GoogleFonts.dmSans(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ExitColors.pureBlack,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            SizedBox(width: 10.w),
+          ],
+          Expanded(
+            flex: 2,
+            child: GestureDetector(
+              onTap: nextStyle == ExitNavButtonStyle.success || loading
+                  ? null
+                  : onNext,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 13.h),
+                decoration: BoxDecoration(
+                  color: nextColor,
+                  borderRadius: BorderRadius.circular(16.r),
+                ),
+                child: Center(
+                  child: loading
+                      ? SizedBox(
+                          height: 18.w,
+                          width: 18.w,
+                          child: const CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : Text(
+                          nextLabel,
+                          style: GoogleFonts.dmSans(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//================= Text Input Filed =========================
+
+class ExitTextField extends StatelessWidget {
+  final String label;
+  final TextEditingController? controller;
+  final String? hint;
+  final TextInputType? keyboardType;
+  final int maxLines;
+
+  const ExitTextField({
+    super.key,
+    required this.label,
+    this.controller,
+    this.hint,
+    this.keyboardType,
+    this.maxLines = 1,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label.toUpperCase(),
+          style: GoogleFonts.dmSans(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.4,
+            color: ExitColors.textMuted,
+          ),
+        ),
+        SizedBox(height: 5.h),
+        
+      ],
+    );
+  }
+}
+
+//======== Check Item (Reason for leaving)=============
+class ExitCheckItem extends StatefulWidget {
+  final String label;
+  final bool selected;
+  final ValueChanged<bool> onToggled;
+
+  const ExitCheckItem({
+    super.key,
+    required this.label,
+    required this.selected,
+    required this.onToggled,
+  });
+
+  @override
+  _ExitCheckItemState createState() => _ExitCheckItemState();
+}
+
+class _ExitCheckItemState extends State<ExitCheckItem> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+onTap:()=> widget.onToggled(!widget.selected),
+child:AnimatedContainer(duration: const Duration(microseconds: 150),
+margin:EdgeInsets.symmetric(horizontal: 11.w,vertical: 10.h),
 decoration: BoxDecoration(
-  color:ExitColors.surface,
-  border:Border(top:BorderSide(color:ExitColors.border ))
+ color:widget.selected? ExitColors.blueLight : ExitColors.surface,
+ borderRadius: BorderRadius.circular(10.r),
+ border:Border.all( 
+  color:widget.selected ? ExitColors.blue : ExitColors.border,
+
+ ) 
 ),
 child:Row(
+
+  crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-if(showBack)...[
-  Expanded(child: GestureDetector(
-    onTap: onBack,
-    child: Container(
-      padding:EdgeInsets.symmetric(vertical:13.h),
-      decoration: BoxDecoration(
-        color:Colors.transparent,
-        borderRadius: BorderRadius.circular(16.r),
-        border:Border.all(color:ExitColors.borderMed),
 
-      ),
-      child:Center(child: Text(
-       '← Back',
-       style:GoogleFonts.dmSans(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.bold,
-        color: ExitColors.pureBlack
-       ) 
-      ),)
-    ),
-  ),),
-
-  SizedBox(width: 10.w,),
-],
-Expanded(flex:2,
-child: GestureDetector(
-  onTap:nextStyle == ExitNavButtonStyle.success || loading ? null
-  : onNext, 
-  child:Container(
-    padding: EdgeInsets.symmetric(vertical:13.h ),
+  // ====================Self Created Checkbox ===========================
+    AnimatedContainer(duration: 
+    Duration(milliseconds: 150),
+    width: 20.w,
+    height: 20.w,
+    margin: EdgeInsets.only(top:1.h),
     decoration: BoxDecoration(
-      color:nextColor,
-      borderRadius: BorderRadius.circular(16.r),
-
+      color:widget.selected ? ExitColors.blue : Colors.white,
+      borderRadius: BorderRadius.circular(5.r),
+      border: Border.all(color:widget.selected ? 
+      ExitColors.blue : ExitColors.borderMed,
+      width: 1.5
+      ),),
+      child: widget.selected ? 
+      Icon(Icons.check_rounded,size:13.sp,
+      color: Colors.white,): null,
     ),
-    child:Center(
-      child:loading ? SizedBox(
-        height: 18.w,
-        width:18.w,
-        child: const CircularProgressIndicator(
-          color:Colors.white,
-          strokeWidth:2 ,
-        ),
-      ):Text(
-        nextLabel,
-        style:GoogleFonts.dmSans(
-          fontSize:14.sp,
-          fontWeight: FontWeight.bold,
-          color:Colors.white,
-        )
+ 
+  SizedBox(width: 10.w,),
+    Expanded(child: Text(
+      widget.label,
+      style:GoogleFonts.dmSans(
+        fontSize: 13.sp,
+        color:ExitColors.text,
+        height: 1.35,
       )
-    )
-  )
-),)
-
-
-
+    ),)
 
 ],)
+
+)
+
     );
-
-
-
-
   }
 }
