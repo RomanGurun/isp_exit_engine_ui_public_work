@@ -435,7 +435,36 @@ class ExitTextField extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5.h),
-        
+        TextFormField(
+          controller: controller,
+          keyboardType: keyboardType,
+          maxLines: maxLines,
+          autofocus: false,
+          style:GoogleFonts.dmSans(fontSize: 14,
+          color:ExitColors.text),
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: GoogleFonts.dmSans(fontSize: 14.sp,
+            color: ExitColors.textMuted),
+            filled: true,
+            fillColor: ExitColors.bg,
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 11.w,vertical: 9.h
+            ),
+            border:OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(color:ExitColors.border),
+
+            ),
+            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r),
+            borderSide: BorderSide(color:ExitColors.border)),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(color:ExitColors.blue),
+                          ),
+                          
+          ),
+        )
       ],
     );
   }
