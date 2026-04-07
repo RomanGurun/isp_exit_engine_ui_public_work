@@ -20,7 +20,7 @@ class ExitPageReasons extends StatefulWidget {
 }
 
 class _ExitPageReasonsState extends State<ExitPageReasons> {
-  void toggle(String reason, bool selected) {
+  void _toggle(String reason, bool selected) {
     final update = Set<String>.from(widget.selectedReasons);
     if (selected) {
       update.add(reason);
@@ -38,7 +38,18 @@ class _ExitPageReasonsState extends State<ExitPageReasons> {
     child:Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-ExitSectionHeader(badge: 'B', title: 'Priary Reason for Leaving')
+ExitSectionHeader(badge: 'B', title: 'Priary Reason for Leaving'),
+ExitCard(child: Column(children: [
+
+
+...exitReasons.map((r) => ExitCheckItem(
+  label:r,
+  selected:widget.selectedReasons.contains(r),
+  onToggled:(v) => _toggle(r,v),
+
+
+))
+],),)
 
 
 
