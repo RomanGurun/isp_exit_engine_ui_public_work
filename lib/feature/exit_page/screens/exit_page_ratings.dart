@@ -51,15 +51,20 @@ style:GoogleFonts.dmSans(
     ],)
     
     ),
-    ...List.generate(exitRatingAspects.length, (i)){
+    ...List.generate(exitRatingAspects.length, (i){
      final aspect = exitRatingAspects[i];
 return ExitStartRatingRow(
-  aspect :aspect
-)
+  aspect :aspect,
+  rating:widget.ratings[aspect] ?? 0,
+  onRated :(r) => _setRating(aspect,r),
+  isLast : i == exitRatingAspects.length - 1,
+
+);
     }
 
 
-
+    ),
+    
 
   ],),)
 

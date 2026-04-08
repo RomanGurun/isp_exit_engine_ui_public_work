@@ -440,31 +440,33 @@ class ExitTextField extends StatelessWidget {
           keyboardType: keyboardType,
           maxLines: maxLines,
           autofocus: false,
-          style:GoogleFonts.dmSans(fontSize: 14,
-          color:ExitColors.text),
+          style: GoogleFonts.dmSans(fontSize: 14, color: ExitColors.text),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: GoogleFonts.dmSans(fontSize: 14.sp,
-            color: ExitColors.textMuted),
+            hintStyle: GoogleFonts.dmSans(
+              fontSize: 14.sp,
+              color: ExitColors.textMuted,
+            ),
             filled: true,
             fillColor: ExitColors.bg,
             contentPadding: EdgeInsets.symmetric(
-              horizontal: 11.w,vertical: 9.h
+              horizontal: 11.w,
+              vertical: 9.h,
             ),
-            border:OutlineInputBorder(
+            border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color:ExitColors.border),
-
+              borderSide: BorderSide(color: ExitColors.border),
             ),
-            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(color:ExitColors.border)),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: BorderSide(color: ExitColors.border),
+            ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color:ExitColors.blue),
-                          ),
-                          
+              borderSide: BorderSide(color: ExitColors.blue),
+            ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -491,53 +493,92 @@ class _ExitCheckItemState extends State<ExitCheckItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-onTap:()=> widget.onToggled(!widget.selected),
-child:AnimatedContainer(duration: const Duration(microseconds: 150),
-margin:EdgeInsets.symmetric(horizontal: 11.w,vertical: 10.h),
+      onTap: () => widget.onToggled(!widget.selected),
+      child: AnimatedContainer(
+        duration: const Duration(microseconds: 150),
+        margin: EdgeInsets.symmetric(horizontal: 11.w, vertical: 10.h),
+        decoration: BoxDecoration(
+          color: widget.selected ? ExitColors.blueLight : ExitColors.surface,
+          borderRadius: BorderRadius.circular(10.r),
+          border: Border.all(
+            color: widget.selected ? ExitColors.blue : ExitColors.border,
+          ),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // ====================Self Created Checkbox ===========================
+            AnimatedContainer(
+              duration: Duration(milliseconds: 150),
+              width: 20.w,
+              height: 20.w,
+              margin: EdgeInsets.only(top: 1.h),
+              decoration: BoxDecoration(
+                color: widget.selected ? ExitColors.blue : Colors.white,
+                borderRadius: BorderRadius.circular(5.r),
+                border: Border.all(
+                  color: widget.selected
+                      ? ExitColors.blue
+                      : ExitColors.borderMed,
+                  width: 1.5,
+                ),
+              ),
+              child: widget.selected
+                  ? Icon(Icons.check_rounded, size: 13.sp, color: Colors.white)
+                  : null,
+            ),
+
+            SizedBox(width: 10.w),
+            Expanded(
+              child: Text(
+                widget.label,
+                style: GoogleFonts.dmSans(
+                  fontSize: 13.sp,
+                  color: ExitColors.text,
+                  height: 1.35,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//================= Start Rating Row ===========================
+class ExitStartRatingRow extends StatefulWidget {
+  final String aspect;
+  final int rating;
+  final ValueChanged<int> onRated;
+  final bool isLast;
+  const ExitStartRatingRow({
+    super.key,
+    required this.aspect,
+    required this.rating,
+    required this.onRated,
+    this.isLast = false,
+  });
+
+
+  @override
+  _ExitStartRatingRowState createState() => _ExitStartRatingRowState();
+}
+
+class _ExitStartRatingRowState extends State<ExitStartRatingRow> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+padding: EdgeInsets.symmetric(vertical:8.h),
 decoration: BoxDecoration(
- color:widget.selected? ExitColors.blueLight : ExitColors.surface,
- borderRadius: BorderRadius.circular(10.r),
- border:Border.all( 
-  color:widget.selected ? ExitColors.blue : ExitColors.border,
-
- ) 
+  border:widget.isLast ? null : Border(
+  bottom:BorderSide(color:ExitColors.border)
+  ),
 ),
-child:Row(
+child: Row(children: [
+  
+],),
 
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-
-  // ====================Self Created Checkbox ===========================
-    AnimatedContainer(duration: 
-    Duration(milliseconds: 150),
-    width: 20.w,
-    height: 20.w,
-    margin: EdgeInsets.only(top:1.h),
-    decoration: BoxDecoration(
-      color:widget.selected ? ExitColors.blue : Colors.white,
-      borderRadius: BorderRadius.circular(5.r),
-      border: Border.all(color:widget.selected ? 
-      ExitColors.blue : ExitColors.borderMed,
-      width: 1.5
-      ),),
-      child: widget.selected ? 
-      Icon(Icons.check_rounded,size:13.sp,
-      color: Colors.white,): null,
-    ),
- 
-  SizedBox(width: 10.w,),
-    Expanded(child: Text(
-      widget.label,
-      style:GoogleFonts.dmSans(
-        fontSize: 13.sp,
-        color:ExitColors.text,
-        height: 1.35,
-      )
-    ),)
-
-],)
-
-)
 
     );
   }
