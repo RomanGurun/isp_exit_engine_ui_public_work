@@ -4,6 +4,7 @@ import '../exit_theme.dart';
 import '../widgets/exit_widgets.dart';
 import 'package:flutter/services.dart';
 import 'exit_page_employee_info.dart';
+import 'exit_page_ratings.dart';
 
 class ExitFormScreen extends StatefulWidget {
   const ExitFormScreen({super.key});
@@ -24,18 +25,12 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   Set<String> _selectedReasons = {};
   final _otherReasonCtrl = TextEditingController();
 
-// ==========Page:4 Feedback =================
-late List<TextEditingController> _feedbackControllers;
+  // ==========Page:4 Feedback =================
+  late List<TextEditingController> _feedbackControllers;
 
-
-
-
-
-//============== Page 3: Ratings ==========================
-// Map of aspect -> rating(0 = unrated)
-late Map<String,int> _ratings;
-
-
+  //============== Page 3: Ratings ==========================
+  // Map of aspect -> rating(0 = unrated)
+  late Map<String, int> _ratings;
 
   // ==============Page Controller =================
   final _pageCtrl = PageController();
@@ -71,7 +66,6 @@ late Map<String,int> _ratings;
     if (mounted) setState(() => _toastVisible = false);
   }
 
-
   //========================= Navigation =======================
   void _goBack() {
     if (_currentStep == 0) return;
@@ -97,6 +91,25 @@ late Map<String,int> _ratings;
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _ratings = {for (final a in exitRatingAspects) a: 0};
+    _feedbackControllers = List.generate(
+      exitFeedbackQuestions.length,
+      (_) => TextEditingController(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _pageCtrl.dispose();
+
+    _otherReasonCtrl.dispose();
+    for (final c in _feedbackControllers) c.dispose();
+    super.dispose();
+    
+  }
 
   Future<void> _submitForm() async {
     setState(() => _loading = true);
@@ -114,22 +127,17 @@ late Map<String,int> _ratings;
   // Build payload for API - wire to model layer
   Map<String, dynamic> _buildPayload() {
     return {
-'employee':{
-  'id':dummyEmployee.employeeId,
-  'name':dummyEmployee.name
-},
-'reasons':_selectedReasons.toList(),
-'otherReason':_otherReasonCtrl.text,
-'ratings': _ratings,
-'feedback':{
-  for(var i = 0;i< exitFeedbackQuestions.length;i++)
-    'q ${i+1}': _feedbackControllers[i].text,
-
-  
-},
-'signed':_signed,
-'submittedAt' : DateTime.now().toIso8601String(),
-    };                                    
+      'employee': {'id': dummyEmployee.employeeId, 'name': dummyEmployee.name},
+      'reasons': _selectedReasons.toList(),
+      'otherReason': _otherReasonCtrl.text,
+      'ratings': _ratings,
+      'feedback': {
+        for (var i = 0; i < exitFeedbackQuestions.length; i++)
+          'q ${i + 1}': _feedbackControllers[i].text,
+      },
+      'signed': _signed,
+      'submittedAt': DateTime.now().toIso8601String(),
+    };
   }
 
   ExitNavButtonStyle get _nextButtonStyle {
@@ -170,11 +178,16 @@ late Map<String,int> _ratings;
 
                     // Page 2
                     ExitPageReasons(
-                      selectedReasons:_selectedReasons,
-                      onChanged:(v) => setState(() => _selectedReasons = v),
-                      otherController : _otherReasonCtrl,
-
-                    ),  
+                      selectedReasons: _selectedReasons,
+                      onChanged: (v) => setState(() => _selectedReasons = v),
+                      otherController: _otherReasonCtrl,
+                    ),
+                    // ================Ratings ============================
+                    // PAGE 3
+                    ExitPageRatings(
+                      ratings: _ratings,
+                      onChanged: (v) => setState(() => _ratings = v),
+                    ),
 
                     // Page 4
                     // ExitPageFeedback(

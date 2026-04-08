@@ -130,7 +130,7 @@ const exitReasons = [
 ];
 
 //================= Rating Aspects ========================
-const exitRatingExpects = [
+const exitRatingAspects = [
   'Overall Job Satisfaction',
   'Compensation & Beneits package',
   'Career Growth & Promotion Oppportunities',
