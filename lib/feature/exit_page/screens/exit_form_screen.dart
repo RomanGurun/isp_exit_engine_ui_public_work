@@ -5,6 +5,8 @@ import '../widgets/exit_widgets.dart';
 import 'package:flutter/services.dart';
 import 'exit_page_employee_info.dart';
 import 'exit_page_ratings.dart';
+import 'exit_page_feedback.dart';
+
 
 class ExitFormScreen extends StatefulWidget {
   const ExitFormScreen({super.key});
@@ -108,7 +110,7 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
     _otherReasonCtrl.dispose();
     for (final c in _feedbackControllers) c.dispose();
     super.dispose();
-    
+
   }
 
   Future<void> _submitForm() async {
@@ -190,9 +192,8 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
                     ),
 
                     // Page 4
-                    // ExitPageFeedback(
-                    //   controller:_feedbackControllers
-                    // )
+                    ExitPageFeedback(controllers: _feedbackControllers),
+                    
                   ],
                 ),
 
