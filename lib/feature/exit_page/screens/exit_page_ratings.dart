@@ -50,7 +50,17 @@ style:GoogleFonts.dmSans(
 
     ],)
     
-    )
+    ),
+    ...List.generate(exitRatingAspects.length, (i)){
+     final aspect = exitRatingAspects[i];
+return ExitStartRatingRow(
+  aspect :aspect
+)
+    }
+
+
+
+
   ],),)
 
 ],),
