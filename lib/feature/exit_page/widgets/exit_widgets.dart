@@ -560,7 +560,6 @@ class ExitStartRatingRow extends StatefulWidget {
     this.isLast = false,
   });
 
-
   @override
   _ExitStartRatingRowState createState() => _ExitStartRatingRowState();
 }
@@ -569,17 +568,47 @@ class _ExitStartRatingRowState extends State<ExitStartRatingRow> {
   @override
   Widget build(BuildContext context) {
     return Container(
-padding: EdgeInsets.symmetric(vertical:8.h),
-decoration: BoxDecoration(
-  border:widget.isLast ? null : Border(
-  bottom:BorderSide(color:ExitColors.border)
-  ),
-),
-child: Row(children: [
-  
-],),
-
-
+      padding: EdgeInsets.symmetric(vertical: 8.h),
+      decoration: BoxDecoration(
+        border: widget.isLast
+            ? null
+            : Border(bottom: BorderSide(color: ExitColors.border)),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              widget.aspect,
+              style: GoogleFonts.dmSans(
+                fontSize: 12.5.sp,
+                color: ExitColors.text,
+                height: 1.3,
+              ),
+            ),
+          ),
+        
+        
+        
+          SizedBox(width: 8.w),
+          Row(
+            children: List.generate(5, (i) {
+              final filled = i < widget.rating;
+              return GestureDetector(
+                onTap: () => widget.onRated(i + 1),
+                child: Padding(
+                  padding: EdgeInsetsGeometry.symmetric(horizontal: 1.w),
+                  child: Icon(
+                    Icons.star_rounded,
+                    key: ValueKey(filled),
+                    size: 22.sp,
+                    color: filled ? ExitColors.amber : ExitColors.borderMed,
+                  ),
+                ),
+              );
+            }),
+          ),
+        ],
+      ),
     );
   }
 }
