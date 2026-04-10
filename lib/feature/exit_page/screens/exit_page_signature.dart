@@ -21,6 +21,31 @@ class ExitPageSignature extends StatelessWidget {
       return ExitSuccessView(employeeName: dummyEmployee.name);
     }
 
-    return SingleChildScrollView();
+    return SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB( 16.w, 16.h, 16.w,24.h),
+      physics: const BouncingScrollPhysics(),
+      child:Column(
+        children: [
+
+ExitSectionHeader(badge: '✏', title:'Acknowledgement & Signature'),
+ExitCard(child:Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+Text('Employee Signature',
+style:GoogleFonts.dmSans(
+  fontSize: 10.5.sp,
+  fontWeight: FontWeight.w600,
+  letterSpacing: 0.4,
+  color:ExitColors.textMuted,
+
+),),
+SizedBox(height: 5.h,),
+ExitSignatureArea(signed: signed, onTap: onSign)
+
+
+],),)
+
+        ],)
+    );
   }
 }

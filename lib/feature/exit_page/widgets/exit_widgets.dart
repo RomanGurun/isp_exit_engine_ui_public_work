@@ -737,14 +737,23 @@ child: Center(child: Text(
   )
 ))
 ),
-SizedBox(height: 18.h,),
-Text('Form Submitted',
-style:GoogleFonts.dmSans(
-  fontSize: 18.sp,
-  fontWeight: FontWeight.w600,
-  color:ExitColors.text,
-)),
+// SizedBox(height: 18.h,),
+// Text('Form Submitted',
+// style:GoogleFonts.dmSans(
+//   fontSize: 18.sp,
+//   fontWeight: FontWeight.w600,
+//   color:ExitColors.text,
+// )),
 
+// SizedBox(height: 8.h,),
+// Text('The exit interview for $employeeName has been'
+// 'recorded successfully.HR will follow up as needed.',
+// style:GoogleFonts.dmSans(
+//   fontSize: 13.sp,
+//   color:ExitColors.textMuted,
+//   height: 1.6
+// ),
+// ),
 
 
 
@@ -753,5 +762,29 @@ style:GoogleFonts.dmSans(
       
       ),
     );
+  }
+}
+
+
+
+//============ SIGNATURE AREA ===================
+
+class ExitSignatureArea extends StatelessWidget {
+ 
+
+final bool signed;
+final VoidCallback onTap;
+
+const ExitSignatureArea({
+  super.key, 
+  required this.signed,
+  required this.onTap
+})
+
+
+  @override
+  Widget build(BuildContext context) {
+  
+
   }
 }
