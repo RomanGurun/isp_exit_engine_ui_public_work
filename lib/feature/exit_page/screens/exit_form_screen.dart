@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_reasons.dart';
+import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart';
 import '../exit_theme.dart';
 import '../widgets/exit_widgets.dart';
 import 'package:flutter/services.dart';
@@ -191,14 +192,23 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
 
                     // Page 4
                     ExitPageFeedback(controllers: _feedbackControllers),
+                
+                // Page 5
+                    ExitPageSignature(signed: _signed,
+                     onSign: ()=> setState(() =>
+                     _signed = true ),
+                     submitted: _submitted,),
+
+                
+                
+                
                   ],
+                
                 ),
 
-                // Page 5
                 
-
                 // Toast Overalay
-                // ExitToast(message:_toastMessage ,visible : _toastVisible),
+                ExitToast(message:_toastMessage ,visible : _toastVisible),
               ],
             ),
           ),

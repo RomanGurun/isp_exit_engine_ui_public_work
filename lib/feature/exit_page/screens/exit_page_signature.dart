@@ -41,7 +41,48 @@ style:GoogleFonts.dmSans(
 ),),
 SizedBox(height: 5.h,),
 ExitSignatureArea(signed: signed, onTap: onSign)
+,if(!signed) ...[
+SizedBox(height: 12.h,),
+Text('By Signing,you confirm that the information provided in this exit interview '
+'is accurate and complete to the best of your knowledge.',
+style:GoogleFonts.dmSans(
+  fontSize: 10.5.sp,
+  fontWeight: FontWeight.w400,
+  letterSpacing: 0.4,
+  color:ExitColors.textMuted,
 
+),)
+],
+if(signed) ...[
+  SizedBox(height: 12.h,),
+  Container(
+    padding: EdgeInsets.all(12.w),
+    decoration: BoxDecoration(
+      color:ExitColors.greenLight,
+      borderRadius: BorderRadius.circular(10.r),
+      border: Border.all(color: 
+      ExitColors.green.withOpacity(0.3)),
+
+    ),
+child: Row(children: [
+  const Icon(Icons.verified_outlined,
+  color:ExitColors.green,
+  size:18,),
+  SizedBox(width: 8.w,),
+  Expanded(child:Text(
+    'Signature recorded.You may now submit the form.',
+    style: GoogleFonts.dmSans(
+      fontSize: 12.sp,
+      color:ExitColors.green,
+      fontWeight: FontWeight.w500,
+      
+    ),
+  ))
+],),
+
+
+  )
+]
 
 ],),)
 

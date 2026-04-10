@@ -716,75 +716,168 @@ class ExitSuccessView extends StatelessWidget {
     return Center(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
-      child:Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
 
-        children: [
-Container(
-  width:60.w,
-  height:60.w,
-  decoration: BoxDecoration(
-color:ExitColors.greenLight,
-shape: BoxShape.circle,
+          children: [
+            Container(
+              width: 60.w,
+              height: 60.w,
+              decoration: BoxDecoration(
+                color: ExitColors.greenLight,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  '✓',
+                  style: TextStyle(
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w700,
+                    color: ExitColors.green,
+                  ),
+                ),
+              ),
+            ),
 
-  ),
-child: Center(child: Text(
-  '✓',
-  style:TextStyle(
-    fontSize: 26.sp,
-    fontWeight: FontWeight.w700,
-    color:ExitColors.green
-  )
-))
-),
-// SizedBox(height: 18.h,),
-// Text('Form Submitted',
-// style:GoogleFonts.dmSans(
-//   fontSize: 18.sp,
-//   fontWeight: FontWeight.w600,
-//   color:ExitColors.text,
-// )),
+            // SizedBox(height: 18.h,),
+            // Text('Form Submitted',
+            // style:GoogleFonts.dmSans(
+            //   fontSize: 18.sp,
+            //   fontWeight: FontWeight.w600,
+            //   color:ExitColors.text,
+            // )),
 
-// SizedBox(height: 8.h,),
-// Text('The exit interview for $employeeName has been'
-// 'recorded successfully.HR will follow up as needed.',
-// style:GoogleFonts.dmSans(
-//   fontSize: 13.sp,
-//   color:ExitColors.textMuted,
-//   height: 1.6
-// ),
-// ),
-
-
-
-
-      ],)
-      
+            // SizedBox(height: 8.h,),
+            // Text('The exit interview for $employeeName has been'
+            // 'recorded successfully.HR will follow up as needed.',
+            // style:GoogleFonts.dmSans(
+            //   fontSize: 13.sp,
+            //   color:ExitColors.textMuted,
+            //   height: 1.6
+            // ),
+            // ),
+          ],
+        ),
       ),
     );
   }
 }
 
-
-
 //============ SIGNATURE AREA ===================
 
 class ExitSignatureArea extends StatelessWidget {
- 
+  final bool signed;
+  final VoidCallback onTap;
 
-final bool signed;
-final VoidCallback onTap;
-
-const ExitSignatureArea({
-  super.key, 
-  required this.signed,
-  required this.onTap
-})
-
+  const ExitSignatureArea({
+    super.key,
+    required this.signed,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-  
+    return GestureDetector(
+      onTap: signed ? null : onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: 72.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: signed ? ExitColors.greenLight : ExitColors.bg,
+          borderRadius: BorderRadius.circular(10.r),
+          border: Border.all(
+            color: signed ? ExitColors.green : ExitColors.borderMed,
+            width: signed ? 1.5 : 1.5,
+            style: signed ? BorderStyle.solid : BorderStyle.solid,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            signed ? '✓  Signed' : 'Tap to sign',
+            style: GoogleFonts.dmSans(
+              fontSize: 13.sp,
+              fontWeight: signed ? FontWeight.w600 : FontWeight.w400,
+              color: signed ? ExitColors.green : ExitColors.textHint,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
+//================== Toast Notfiaction =========================TOAST NOTIFICATION =============
+class ExitToast extends StatefulWidget {
+  final String message;
+  final bool visible;
+
+  const ExitToast({super.key, required this.message, required this.visible});
+
+  @override
+  _ExitToastState createState() => _ExitToastState();
+}
+
+class _ExitToastState extends State<ExitToast>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+  late Animation<double> _opacity;
+  late Animation<Offset> _slide;
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
+    _opacity = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
+    _slide = Tween<Offset>(
+      begin: const Offset(0, 0.3),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
+  }
+
+  @override
+  void didUpdateWidget(ExitToast oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.visible) {
+      _ctrl.forward();
+    } else {
+      _ctrl.reverse();
+    }
+  }
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 80.h,
+      left: 0,
+      right: 0,
+      child: Center(
+        child: FadeTransition(
+          opacity: _opacity,
+          child: SlideTransition(
+            position: _slide,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
+
+              child: Text(
+                widget.message,
+                style: GoogleFonts.dmSans(
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
