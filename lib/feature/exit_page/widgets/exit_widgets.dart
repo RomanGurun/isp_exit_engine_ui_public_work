@@ -586,9 +586,7 @@ class _ExitStartRatingRowState extends State<ExitStartRatingRow> {
               ),
             ),
           ),
-        
-        
-        
+
           SizedBox(width: 8.w),
           Row(
             children: List.generate(5, (i) {
@@ -608,6 +606,151 @@ class _ExitStartRatingRowState extends State<ExitStartRatingRow> {
             }),
           ),
         ],
+      ),
+    );
+  }
+}
+
+//================== FeedBack Tex Area Block ===================================
+class ExitFeedBackBlock extends StatelessWidget {
+  final int number;
+  final String question;
+  final TextEditingController controller;
+
+  const ExitFeedBackBlock({
+    super.key,
+    required this.number,
+    required this.question,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 14.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 20.w,
+                height: 20.w,
+                decoration: BoxDecoration(
+                  color: ExitColors.navy,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    '$number',
+                    style: GoogleFonts.dmSans(
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 8.w),
+
+              Expanded(
+                child: Text(
+                  question,
+                  style: GoogleFonts.dmSans(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w500,
+                    color: ExitColors.text,
+                    height: 1.4,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 7.h),
+
+          TextFormField(
+            controller: controller,
+            maxLines: 3,
+
+            style: GoogleFonts.dmSans(fontSize: 14.sp, color: ExitColors.text),
+            decoration: InputDecoration(
+              hintText: 'Your response...',
+              hintStyle: GoogleFonts.dmSans(
+                fontSize: 14.sp,
+                color: ExitColors.textHint,
+              ),
+              filled: true,
+              fillColor: ExitColors.bg,
+
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 11.w,
+                vertical: 9.h,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: BorderSide(color: ExitColors.border),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: BorderSide(color: ExitColors.border),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: const BorderSide(color: ExitColors.blue),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ExitSuccessView extends StatelessWidget {
+  final String employeeName;
+  const ExitSuccessView({super.key, required this.employeeName});
+
+  // =============SUCCESS WIDGET (Final Page)========================  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
+      child:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+Container(
+  width:60.w,
+  height:60.w,
+  decoration: BoxDecoration(
+color:ExitColors.greenLight,
+shape: BoxShape.circle,
+
+  ),
+child: Center(child: Text(
+  '✓',
+  style:TextStyle(
+    fontSize: 26.sp,
+    fontWeight: FontWeight.w700,
+    color:ExitColors.green
+  )
+))
+),
+SizedBox(height: 18.h,),
+Text('Form Submitted',
+style:GoogleFonts.dmSans(
+  fontSize: 18.sp,
+  fontWeight: FontWeight.w600,
+  color:ExitColors.text,
+)),
+
+
+
+
+
+      ],)
+      
       ),
     );
   }
