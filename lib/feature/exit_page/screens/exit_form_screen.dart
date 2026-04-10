@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'exit_page_employee_info.dart';
 import 'exit_page_ratings.dart';
 import 'exit_page_feedback.dart';
+import 'out_screen.dart';
 
 class ExitFormScreen extends StatefulWidget {
   const ExitFormScreen({super.key});
@@ -80,6 +81,19 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   }
 
   void _goNext() async {
+    // If already submitted, navigate to OutScreen
+// =================ADDED FROM GUIDELINE =================
+
+    if (_submitted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const OutScreen()),
+      );
+      return;
+    }
+// =================ADDED FROM GUIDELINE =================
+
+
     if (!_validateCurrent()) return;
     if (_currentStep == _totalSteps - 1) {
       await _submitForm();
@@ -124,6 +138,7 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
       _showToast('Exit interview submitted');
     }
   }
+
 
   // Build payload for API - wire to model layer
   Map<String, dynamic> _buildPayload() {

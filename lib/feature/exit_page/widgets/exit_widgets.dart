@@ -365,7 +365,7 @@ class ExitNavFooter extends StatelessWidget {
           Expanded(
             flex: 2,
             child: GestureDetector(
-              onTap: nextStyle == ExitNavButtonStyle.success || loading
+              onTap: loading
                   ? null
                   : onNext,
               child: Container(
