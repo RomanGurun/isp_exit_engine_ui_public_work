@@ -108,7 +108,7 @@ class ExitStepBar extends StatelessWidget {
                 margin: EdgeInsets.only(right: 6.w),
                 decoration: BoxDecoration(
                   color: isDone
-                      ? const Color(0xFF1D6FBF)
+                      ? ExitColors.g8
                       : isActive
                       ? ExitColors.g8
                       : ExitColors.border,
@@ -309,12 +309,12 @@ class ExitNavFooter extends StatelessWidget {
     switch (nextStyle) {
       case ExitNavButtonStyle.submit:
         nextLabel = 'Submit Form';
-        nextColor = ExitColors.blue;
+        nextColor = ExitColors.g8;
         break;
 
       case ExitNavButtonStyle.success:
         nextLabel = "✓ Done ";
-        nextColor = ExitColors.green;
+        nextColor = ExitColors.g8;
         break;
       case ExitNavButtonStyle.normal:
         nextLabel = loading ? 'Submitting...' : 'Next →';
@@ -463,7 +463,7 @@ class ExitTextField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: ExitColors.blue),
+              borderSide: BorderSide(color: ExitColors.g8),
             ),
           ),
         ),
@@ -498,10 +498,10 @@ class _ExitCheckItemState extends State<ExitCheckItem> {
         duration: const Duration(microseconds: 150),
         margin: EdgeInsets.symmetric(horizontal: 11.w, vertical: 10.h),
         decoration: BoxDecoration(
-          color: widget.selected ? ExitColors.blueLight : ExitColors.surface,
+          color: widget.selected ? ExitColors.surface : ExitColors.surface,
           borderRadius: BorderRadius.circular(10.r),
           border: Border.all(
-            color: widget.selected ? ExitColors.blue : ExitColors.border,
+            color: widget.selected ? ExitColors.g8 : ExitColors.border,
           ),
         ),
         child: Row(
@@ -514,11 +514,11 @@ class _ExitCheckItemState extends State<ExitCheckItem> {
               height: 20.w,
               margin: EdgeInsets.only(top: 1.h),
               decoration: BoxDecoration(
-                color: widget.selected ? ExitColors.blue : Colors.white,
+                color: widget.selected ? ExitColors.g8 : Colors.white,
                 borderRadius: BorderRadius.circular(5.r),
                 border: Border.all(
                   color: widget.selected
-                      ? ExitColors.blue
+                      ? ExitColors.g8
                       : ExitColors.borderMed,
                   width: 1.5,
                 ),
@@ -638,7 +638,7 @@ class ExitFeedBackBlock extends StatelessWidget {
                 width: 20.w,
                 height: 20.w,
                 decoration: BoxDecoration(
-                  color: ExitColors.navy,
+                  color: ExitColors.g8,
                   shape: BoxShape.circle,
                 ),
                 child: Center(
