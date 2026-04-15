@@ -7,15 +7,45 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Welcome Page')),
+      appBar: AppBar(title: Text('Welcome Page',
+style: TextStyle(color:ExitColors.autoBadgeBg),
+)
+,
+centerTitle: true,
+backgroundColor: ExitColors.green,
+// leading: IconButton(onPressed: (){
+
+// }, icon: Icon(Icons.menu)),
+
+
+actions: [
+  IconButton(icon: Icon(Icons.search),
+  onPressed: (){},),
+IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
+
+
+],
+elevation: 0.7,
+shape: RoundedRectangleBorder(
+  borderRadius: BorderRadius.vertical(
+    bottom:Radius.circular(20),
+  )
+),
+
+
+
+
+
+
+),
       body: Center(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color: ExitColors.textHint,
-              ),
-              borderRadius: BorderRadius.circular(40),
+              color: ExitColors.navy,
+              // border: Border.all(color: ExitColors.textHint),
+              // borderRadius: BorderRadius.circular(40),
             ),
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 11),
 
@@ -26,16 +56,46 @@ class OutScreen extends StatelessWidget {
                     onTap: () {},
                     child: Text(
                       'Out Screen Button',
-                      style: TextStyle(color: ExitColors.pureBlack,
-                      fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: ExitColors.autoBadgeBg,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
+                ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10
+
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration
+                      (
+
+                      color:ExitColors.green,
+                        borderRadius: BorderRadius.circular(10)
+                        
+                      ),
+                      child: Center(child: Text("Item $index",
+                      style: TextStyle(fontSize: 14,
+                      fontWeight: FontWeight.bold),)),
+
+                    );
+
+                  },
                 ),
               ],
             ),
           ),
         ),
       ),
+      backgroundColor: ExitColors.border,
     );
   }
 }
