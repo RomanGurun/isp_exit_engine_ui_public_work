@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isp_exit_form_implementation/feature/exit_page/exit_theme.dart';
 
 class OutScreen extends StatelessWidget {
   const OutScreen({super.key});
@@ -12,8 +13,8 @@ class OutScreen extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.teal),
-              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: ExitColors.textHint),
+              borderRadius: BorderRadius.circular(30),
             ),
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 11),
 
@@ -24,7 +25,7 @@ class OutScreen extends StatelessWidget {
                     onTap: () {},
                     child: Text(
                       'Out Screen Button',
-                      style: TextStyle(color: Colors.green),
+                      style: TextStyle(color: ExitColors.border),
                     ),
                   ),
                 ),
@@ -34,7 +35,7 @@ Container(
                     onTap: () {},
                     child: Text(
                       'Out Screen Button',
-                      style: TextStyle(color: Colors.green),
+                      style: TextStyle(color: ExitColors.border),
                     ),
                   ),
                 ),
@@ -44,7 +45,7 @@ Container(
                     onTap: () {},
                     child: Text(
                       'Out Screen Button',
-                      style: TextStyle(color: Colors.green),
+                      style: TextStyle(color:ExitColors.border),
                     ),
                   ),
                 ),
