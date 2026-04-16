@@ -7,7 +7,7 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Welcome Page',
+      appBar: AppBar(title: Text('Extra Page',
 style: TextStyle(color:ExitColors.autoBadgeBg),
 )
 ,
@@ -19,7 +19,7 @@ backgroundColor: ExitColors.green,
 
 
 actions: [
-  IconButton(icon: Icon(Icons.search),
+  IconButton(icon: Icon(Icons.search_off_outlined),
   onPressed: (){},),
 IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
 
@@ -51,24 +51,62 @@ shape: RoundedRectangleBorder(
 
             child: Column(
               children: [
-                Container(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      'Out Screen Button',
-                      style: TextStyle(
-                        color: ExitColors.autoBadgeBg,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 10,
+                  itemCount: 8,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: ExitColors.green,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Demo $index",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+
+
+
+
+
+
+
+
+
+
+
+                // Container(
+                //   child: GestureDetector(
+                //     onTap: () {},
+                //     child: Text(
+                //       'Out Screen Button',
+                //       style: TextStyle(
+                //         color: ExitColors.autoBadgeBg,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 8,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10
 
