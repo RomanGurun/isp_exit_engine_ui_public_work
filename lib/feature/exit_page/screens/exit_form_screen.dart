@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_reasons.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart';
@@ -40,6 +42,7 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
 
   // ==============Page 5: Signature
   bool _signed = false;
+  Uint8List? _signatureBytes;
 
   //=========== submission ====================
   bool _loading = false;
@@ -82,8 +85,6 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
 
   void _goNext() async {
     // If already submitted, navigate to OutScreen
-// =================ADDED FROM GUIDELINE =================
-
     if (_submitted) {
       Navigator.push(
         context,
@@ -91,8 +92,6 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
       );
       return;
     }
-// =================ADDED FROM GUIDELINE =================
-
 
     if (!_validateCurrent()) return;
     if (_currentStep == _totalSteps - 1) {
@@ -120,7 +119,6 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   @override
   void dispose() {
     _pageCtrl.dispose();
-
     _otherReasonCtrl.dispose();
     for (final c in _feedbackControllers) c.dispose();
     super.dispose();
@@ -138,7 +136,6 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
       _showToast('Exit interview submitted');
     }
   }
-
 
   // Build payload for API - wire to model layer
   Map<String, dynamic> _buildPayload() {
@@ -159,14 +156,11 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   ExitNavButtonStyle get _nextButtonStyle {
     if (_submitted) return ExitNavButtonStyle.success;
     if (_currentStep == _totalSteps - 1) return ExitNavButtonStyle.submit;
-
     return ExitNavButtonStyle.normal;
   }
 
   @override
   Widget build(BuildContext context) {
-    //  SystemChrom.setSystem
-
     return Scaffold(
       backgroundColor: ExitColors.bg,
       body: Column(
@@ -198,8 +192,8 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
                       onChanged: (v) => setState(() => _selectedReasons = v),
                       otherController: _otherReasonCtrl,
                     ),
-                    // ================Ratings ============================
-                    // PAGE 3
+
+                    // Page 3 – Ratings
                     ExitPageRatings(
                       ratings: _ratings,
                       onChanged: (v) => setState(() => _ratings = v),
@@ -207,23 +201,22 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
 
                     // Page 4
                     ExitPageFeedback(controllers: _feedbackControllers),
-                
-                // Page 5
-                    ExitPageSignature(signed: _signed,
-                     onSign: ()=> setState(() =>
-                     _signed = true ),
-                     submitted: _submitted,),
 
-                
-                
-                
+                    // Page 5 – Signature (real hand_signature pad)
+                    ExitPageSignature(
+                      signed: _signed,
+                      signatureBytes: _signatureBytes,
+                      onSign: (bytes) => setState(() {
+                        _signed = true;
+                        _signatureBytes = bytes;
+                      }),
+                      submitted: _submitted,
+                    ),
                   ],
-                
                 ),
 
-                
-                // Toast Overalay
-                ExitToast(message:_toastMessage ,visible : _toastVisible),
+                // Toast Overlay
+                ExitToast(message: _toastMessage, visible: _toastVisible),
               ],
             ),
           ),
