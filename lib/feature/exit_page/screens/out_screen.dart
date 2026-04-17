@@ -12,7 +12,7 @@ style: TextStyle(color:ExitColors.pureBlack),
 )
 ,
 centerTitle: true,
-backgroundColor: ExitColors.green,
+backgroundColor: ExitColors.navy,
 // leading: IconButton(onPressed: (){
 
 // }, icon: Icon(Icons.menu)),
@@ -116,7 +116,7 @@ shape: RoundedRectangleBorder(
                       decoration: BoxDecoration
                       (
 
-                      color:ExitColors.green,
+                      color:ExitColors.navy,
                         borderRadius: BorderRadius.circular(10)
                         
                       ),
