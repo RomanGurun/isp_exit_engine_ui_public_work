@@ -54,7 +54,7 @@ shape: RoundedRectangleBorder(
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 12,
+                  itemCount: 8,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                     crossAxisSpacing: 10,
@@ -70,7 +70,7 @@ shape: RoundedRectangleBorder(
                         child: Text(
                           "Demo $index",
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
