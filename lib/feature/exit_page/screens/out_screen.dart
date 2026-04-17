@@ -19,7 +19,7 @@ backgroundColor: ExitColors.green,
 
 
 actions: [
-  IconButton(icon: Icon(Icons.search_off_outlined),
+  IconButton(icon: Icon(Icons.search),
   onPressed: (){},),
 IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
 
@@ -54,7 +54,7 @@ shape: RoundedRectangleBorder(
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 8,
+                  itemCount: 12,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                     crossAxisSpacing: 10,
@@ -63,7 +63,7 @@ shape: RoundedRectangleBorder(
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: ExitColors.green,
+                        color: ExitColors.navy,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
