@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hand_signature/signature.dart';
+import 'package:isp_exit_form_implementation/core/constants/app_text_styles.dart';
 
 import '../exit_theme.dart';
 import '../widgets/exit_widgets.dart';
@@ -80,9 +80,7 @@ class _ExitPageSignatureState extends State<ExitPageSignature> {
               children: [
                 Text(
                   'Employee Signature',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 10.5.sp,
-                    fontWeight: FontWeight.w600,
+                  style: AppTextStyle.semiBold(11).copyWith(
                     letterSpacing: 0.4,
                     color: ExitColors.textMuted,
                   ),
@@ -133,9 +131,7 @@ class _ExitPageSignatureState extends State<ExitPageSignature> {
                                   ),
                                   child: Text(
                                     'Tap to re-sign',
-                                    style: GoogleFonts.dmSans(
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.w500,
+                                    style: AppTextStyle.medium(10).copyWith(
                                       color: ExitColors.g8,
                                     ),
                                   ),
@@ -152,9 +148,7 @@ class _ExitPageSignatureState extends State<ExitPageSignature> {
                               SizedBox(height: 4.h),
                               Text(
                                 'Tap to capture signature',
-                                style: GoogleFonts.dmSans(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400,
+                                style: AppTextStyle.regular(13).copyWith(
                                   color: ExitColors.textHint,
                                 ),
                               ),
@@ -170,9 +164,7 @@ class _ExitPageSignatureState extends State<ExitPageSignature> {
                     'By signing, you confirm that the information provided in '
                     'this exit interview is accurate and complete to the best '
                     'of your knowledge.',
-                    style: GoogleFonts.dmSans(
-                      fontSize: 10.5.sp,
-                      fontWeight: FontWeight.w400,
+                    style: AppTextStyle.regular(11).copyWith(
                       letterSpacing: 0.4,
                       color: ExitColors.textMuted,
                     ),
@@ -196,10 +188,8 @@ class _ExitPageSignatureState extends State<ExitPageSignature> {
                         Expanded(
                           child: Text(
                             'Signature recorded. You may now submit the form.',
-                            style: GoogleFonts.dmSans(
-                              fontSize: 12.sp,
+                            style: AppTextStyle.medium(12).copyWith(
                               color: ExitColors.green,
-                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
@@ -266,9 +256,7 @@ class _SignaturePadSheetState extends State<_SignaturePadSheet> {
               children: [
                 Text(
                   'Employee Signature',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
+                  style: AppTextStyle.bold(15).copyWith(
                     color: ExitColors.text,
                   ),
                 ),
@@ -279,8 +267,7 @@ class _SignaturePadSheetState extends State<_SignaturePadSheet> {
                       size: 18.sp, color: ExitColors.textMuted),
                   label: Text(
                     'Clear',
-                    style: GoogleFonts.dmSans(
-                      fontSize: 13.sp,
+                    style: AppTextStyle.regular(13).copyWith(
                       color: ExitColors.textMuted,
                     ),
                   ),
@@ -364,9 +351,7 @@ class _SignaturePadSheetState extends State<_SignaturePadSheet> {
                     ),
                     child: Text(
                       'Cancel',
-                      style: GoogleFonts.dmSans(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
+                      style: AppTextStyle.semiBold(14).copyWith(
                         color: ExitColors.textMuted,
                       ),
                     ),
@@ -401,9 +386,7 @@ class _SignaturePadSheetState extends State<_SignaturePadSheet> {
                     ),
                     child: Text(
                       'Confirm',
-                      style: GoogleFonts.dmSans(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
+                      style: AppTextStyle.semiBold(14).copyWith(
                         color: Colors.white,
                       ),
                     ),

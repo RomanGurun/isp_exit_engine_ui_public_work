@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:isp_exit_form_implementation/core/constants/app_text_styles.dart';
 import '../exit_theme.dart';
 import '../widgets/exit_widgets.dart';
 
@@ -39,13 +39,12 @@ child: Column(children: [
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
 Text('1 = Very Dissatisfied',
-style:GoogleFonts.dmSans(fontSize: 10.sp,
+style: AppTextStyle.regular(11).copyWith(
 color: ExitColors.textHint)),
 
 Text('5 = Very Satisfied',
-style:GoogleFonts.dmSans(
-  fontSize: 10.sp,
-  color: ExitColors.textHint
+style: AppTextStyle.regular(11).copyWith(
+  color: ExitColors.textHint,
 ))
 
     ],)

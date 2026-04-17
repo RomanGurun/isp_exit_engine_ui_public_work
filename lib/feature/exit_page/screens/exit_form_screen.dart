@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:isp_exit_form_implementation/core/widgets/show_snackbar.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_reasons.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart';
 import '../exit_theme.dart';
@@ -22,9 +23,6 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   int _currentStep = 0;
   final int _totalSteps = exitSteps.length;
 
-  // ==============Toast =========================
-  bool _toastVisible = false;
-  String _toastMessage = '';
 
   //================= Page 2 : Reasons =========================
   Set<String> _selectedReasons = {};
@@ -51,25 +49,53 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
   //====================== Validation ===============================
 
   bool _validateCurrent() {
-    if (_currentStep == 1 && _selectedReasons.isEmpty) {
-      _showToast('Please select at least one reason for leaving ');
-      return false;
+    // Page 2 – Reasons: at least one checkbox or other text must be filled
+    if (_currentStep == 1) {
+      final otherFilled = _otherReasonCtrl.text.trim().isNotEmpty;
+      if (_selectedReasons.isEmpty && !otherFilled) {
+        ClassicSnackBar.error(
+          context: context,
+          msg: 'Please select at least one reason for leaving.',
+        );
+        return false;
+      }
     }
-    if (_currentStep == 4 && !_signed) {
-      _showToast('Please sign before submitting');
-      return false;
-    }
-    return true;
-  }
 
-  //===================== Toast =======================
-  void _showToast(String msg) async {
-    setState(() {
-      _toastMessage = msg;
-      _toastVisible = true;
-    });
-    await Future.delayed(const Duration(seconds: 3));
-    if (mounted) setState(() => _toastVisible = false);
+    // Page 3 – Ratings: at least one aspect must be rated
+    if (_currentStep == 2) {
+      final hasRating = _ratings.values.any((r) => r > 0);
+      if (!hasRating) {
+        ClassicSnackBar.error(
+          context: context,
+          msg: 'Please rate at least one aspect before continuing.',
+        );
+        return false;
+      }
+    }
+
+    // Page 4 – Feedback: at least one response must be filled
+    if (_currentStep == 3) {
+      final hasFeedback =
+          _feedbackControllers.any((c) => c.text.trim().isNotEmpty);
+      if (!hasFeedback) {
+        ClassicSnackBar.error(
+          context: context,
+          msg: 'Please answer at least one feedback question.',
+        );
+        return false;
+      }
+    }
+
+    // Page 5 – Signature: must be signed
+    if (_currentStep == 4 && !_signed) {
+      ClassicSnackBar.error(
+        context: context,
+        msg: 'Please sign before submitting.',
+      );
+      return false;
+    }
+
+    return true;
   }
 
   //========================= Navigation =======================
@@ -133,7 +159,10 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
         _loading = false;
         _submitted = true;
       });
-      _showToast('Exit interview submitted');
+      ClassicSnackBar.success(
+        context: context,
+        msg: 'Exit interview submitted successfully.',
+      );
     }
   }
 
@@ -215,8 +244,7 @@ class _ExitFormScreenState extends State<ExitFormScreen> {
                   ],
                 ),
 
-                // Toast Overlay
-                ExitToast(message: _toastMessage, visible: _toastVisible),
+
               ],
             ),
           ),

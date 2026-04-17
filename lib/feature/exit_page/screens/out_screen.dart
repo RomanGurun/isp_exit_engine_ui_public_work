@@ -12,14 +12,14 @@ style: TextStyle(color:ExitColors.pureBlack),
 )
 ,
 centerTitle: true,
-backgroundColor: ExitColors.navy,
+backgroundColor: ExitColors.green,
 // leading: IconButton(onPressed: (){
 
 // }, icon: Icon(Icons.menu)),
 
 
 actions: [
-  IconButton(icon: Icon(Icons.search),
+  IconButton(icon: Icon(Icons.search_off_outlined),
   onPressed: (){},),
 IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
 
@@ -63,14 +63,14 @@ shape: RoundedRectangleBorder(
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: ExitColors.navy,
+                        color: ExitColors.green,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text(
                           "Demo $index",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -116,7 +116,7 @@ shape: RoundedRectangleBorder(
                       decoration: BoxDecoration
                       (
 
-                      color:ExitColors.navy,
+                      color:ExitColors.green,
                         borderRadius: BorderRadius.circular(10)
                         
                       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:isp_exit_form_implementation/core/constants/app_text_styles.dart';
 import '../exit_theme.dart';
 
 // App Header (Navy Topbar)
@@ -23,20 +23,15 @@ class ExitAppHeader extends StatelessWidget {
             children: [
               Text(
                 'ISP Company',
-                style: GoogleFonts.dmSans(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w600,
+                style: AppTextStyle.semiBold(12).copyWith(
                   letterSpacing: 1.6,
-                  // color: const Color(0xFF5B9BD5),
                   color: ExitColors.pureWhite,
                 ),
               ),
               SizedBox(height: 3.h),
               Text(
                 'Exit Interview Form',
-                style: GoogleFonts.dmSans(
-                  fontSize: 17.sp,
-                  fontWeight: FontWeight.w700,
+                style: AppTextStyle.bold(16).copyWith(
                   color: Colors.white,
                 ),
               ),
@@ -78,18 +73,14 @@ class ExitStepBar extends StatelessWidget {
             children: [
               Text(
                 stepLabel,
-                style: GoogleFonts.dmSans(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
+                style: AppTextStyle.semiBold(13).copyWith(
                   color: ExitColors.text,
                 ),
               ),
 
               Text(
                 '${currentStep + 1} of $totalSteps',
-                style: GoogleFonts.dmSans(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
+                style: AppTextStyle.medium(13).copyWith(
                   color: ExitColors.pureBlack,
                 ),
               ),
@@ -150,9 +141,7 @@ class ExitSectionHeader extends StatelessWidget {
             ),
             child: Text(
               badge,
-              style: GoogleFonts.dmSans(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w600,
+              style: AppTextStyle.semiBold(11).copyWith(
                 letterSpacing: 0.8,
                 color: Colors.white,
               ),
@@ -161,9 +150,7 @@ class ExitSectionHeader extends StatelessWidget {
           SizedBox(width: 8.w),
           Text(
             title,
-            style: GoogleFonts.dmSans(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w600,
+            style: AppTextStyle.semiBold(14).copyWith(
               color: ExitColors.text,
             ),
           ),
@@ -221,9 +208,7 @@ class ExitAutoFilledBadge extends StatelessWidget {
           SizedBox(width: 4.w),
           Text(
             'Auto-Filled from system',
-            style: GoogleFonts.dmSans(
-              fontSize: 12.5.sp,
-              fontWeight: FontWeight.w600,
+            style: AppTextStyle.semiBold(12).copyWith(
               letterSpacing: 0.5,
               color: ExitColors.g8,
             ),
@@ -253,9 +238,7 @@ class ExitReadOnlyField extends StatelessWidget {
       children: [
         Text(
           label.toUpperCase(),
-          style: GoogleFonts.dmSans(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w700,
+          style: AppTextStyle.semiBold(11).copyWith(
             letterSpacing: 0.4,
             color: ExitColors.pureBlack,
           ),
@@ -271,9 +254,7 @@ class ExitReadOnlyField extends StatelessWidget {
           ),
           child: Text(
             value,
-            style: GoogleFonts.dmSans(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
+            style: AppTextStyle.medium(13).copyWith(
               color: ExitColors.pureBlack,
             ),
           ),
@@ -349,9 +330,7 @@ class ExitNavFooter extends StatelessWidget {
                   child: Center(
                     child: Text(
                       '← Back',
-                      style: GoogleFonts.dmSans(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.bold,
+                      style: AppTextStyle.bold(14).copyWith(
                         color: ExitColors.pureBlack,
                       ),
                     ),
@@ -386,9 +365,7 @@ class ExitNavFooter extends StatelessWidget {
                         )
                       : Text(
                           nextLabel,
-                          style: GoogleFonts.dmSans(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold,
+                          style: AppTextStyle.bold(14).copyWith(
                             color: Colors.white,
                           ),
                         ),
@@ -427,9 +404,7 @@ class ExitTextField extends StatelessWidget {
       children: [
         Text(
           label.toUpperCase(),
-          style: GoogleFonts.dmSans(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w600,
+          style: AppTextStyle.semiBold(11).copyWith(
             letterSpacing: 0.4,
             color: ExitColors.textMuted,
           ),
@@ -440,11 +415,10 @@ class ExitTextField extends StatelessWidget {
           keyboardType: keyboardType,
           maxLines: maxLines,
           autofocus: false,
-          style: GoogleFonts.dmSans(fontSize: 14, color: ExitColors.text),
+          style: AppTextStyle.regular(13).copyWith(color: ExitColors.text),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: GoogleFonts.dmSans(
-              fontSize: 14.sp,
+            hintStyle: AppTextStyle.regular(13).copyWith(
               color: ExitColors.textMuted,
             ),
             filled: true,
@@ -532,8 +506,7 @@ class _ExitCheckItemState extends State<ExitCheckItem> {
             Expanded(
               child: Text(
                 widget.label,
-                style: GoogleFonts.dmSans(
-                  fontSize: 13.sp,
+                style: AppTextStyle.regular(13).copyWith(
                   color: ExitColors.text,
                   height: 1.35,
                 ),
@@ -579,8 +552,7 @@ class _ExitStartRatingRowState extends State<ExitStartRatingRow> {
           Expanded(
             child: Text(
               widget.aspect,
-              style: GoogleFonts.dmSans(
-                fontSize: 12.5.sp,
+              style: AppTextStyle.medium(12).copyWith(
                 color: ExitColors.text,
                 height: 1.3,
               ),
@@ -644,9 +616,7 @@ class ExitFeedBackBlock extends StatelessWidget {
                 child: Center(
                   child: Text(
                     '$number',
-                    style: GoogleFonts.dmSans(
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w600,
+                    style: AppTextStyle.semiBold(10).copyWith(
                       color: Colors.white,
                     ),
                   ),
@@ -657,9 +627,7 @@ class ExitFeedBackBlock extends StatelessWidget {
               Expanded(
                 child: Text(
                   question,
-                  style: GoogleFonts.dmSans(
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w500,
+                  style: AppTextStyle.medium(13).copyWith(
                     color: ExitColors.text,
                     height: 1.4,
                   ),
@@ -673,11 +641,10 @@ class ExitFeedBackBlock extends StatelessWidget {
             controller: controller,
             maxLines: 3,
 
-            style: GoogleFonts.dmSans(fontSize: 14.sp, color: ExitColors.text),
+            style: AppTextStyle.regular(13).copyWith(color: ExitColors.text),
             decoration: InputDecoration(
               hintText: 'Your response...',
-              hintStyle: GoogleFonts.dmSans(
-                fontSize: 14.sp,
+              hintStyle: AppTextStyle.regular(13).copyWith(
                 color: ExitColors.textHint,
               ),
               filled: true,
@@ -795,9 +762,7 @@ class ExitSignatureArea extends StatelessWidget {
         child: Center(
           child: Text(
             signed ? '✓  Signed' : 'Tap to sign',
-            style: GoogleFonts.dmSans(
-              fontSize: 13.sp,
-              fontWeight: signed ? FontWeight.w600 : FontWeight.w400,
+            style: (signed ? AppTextStyle.semiBold(13) : AppTextStyle.regular(13)).copyWith(
               color: signed ? ExitColors.green : ExitColors.textHint,
             ),
           ),
@@ -868,9 +833,7 @@ class _ExitToastState extends State<ExitToast>
 
               child: Text(
                 widget.message,
-                style: GoogleFonts.dmSans(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w500,
+                style: AppTextStyle.medium(12).copyWith(
                   color: Colors.white,
                 ),
               ),
