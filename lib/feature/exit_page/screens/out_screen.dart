@@ -7,8 +7,8 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(' DEMO PAGE',
-style: TextStyle(color:ExitColors.pureBlack),
+      appBar: AppBar(title: Text(' Out Screen Page',
+style: TextStyle(color:ExitColors.g8),
 )
 ,
 centerTitle: true,
