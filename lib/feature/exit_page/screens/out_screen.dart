@@ -68,7 +68,7 @@ shape: RoundedRectangleBorder(
                       ),
                       child: Center(
                         child: Text(
-                          "Demo $index",
+                          "Icon $index",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
