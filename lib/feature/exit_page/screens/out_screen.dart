@@ -8,11 +8,11 @@ class OutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(' Application Screen Page',
-style: TextStyle(color:ExitColors.g8),
+style: TextStyle(color:ExitColors.navy),
 )
 ,
 centerTitle: true,
-backgroundColor: ExitColors.green,
+backgroundColor: ExitColors.navy,
 // leading: IconButton(onPressed: (){
 
 // }, icon: Icon(Icons.menu)),
@@ -21,7 +21,7 @@ backgroundColor: ExitColors.green,
 actions: [
   IconButton(icon: Icon(Icons.search),
   onPressed: (){},),
-IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
+IconButton(onPressed: (){}, icon: Icon(Icons.account_balance_outlined))
 
 
 ],
