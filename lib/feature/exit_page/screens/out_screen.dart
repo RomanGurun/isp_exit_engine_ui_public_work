@@ -7,7 +7,7 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(' Out Screen Page',
+      appBar: AppBar(title: Text(' Application Screen Page',
 style: TextStyle(color:ExitColors.g8),
 )
 ,
@@ -63,12 +63,12 @@ shape: RoundedRectangleBorder(
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: ExitColors.red,
+                        color: ExitColors.navy,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                         child: Text(
-                          "Icon $index",
+                          "ICON $index",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
