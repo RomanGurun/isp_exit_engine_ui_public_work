@@ -7,7 +7,7 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('  Screen Page',
+      appBar: AppBar(title: Text('Title Page',
 style: TextStyle(color:ExitColors.blue),
 )
 ,
@@ -40,7 +40,7 @@ shape: RoundedRectangleBorder(
 ),
       body: Center(
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const ScrollPhysics(),
           child: Container(
             decoration: BoxDecoration(
               color: ExitColors.blue,
