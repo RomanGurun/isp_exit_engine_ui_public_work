@@ -7,12 +7,12 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(' Application Screen Page',
-style: TextStyle(color:ExitColors.navy),
+      appBar: AppBar(title: Text('  Screen Page',
+style: TextStyle(color:ExitColors.blue),
 )
 ,
 centerTitle: true,
-backgroundColor: ExitColors.navy,
+backgroundColor: ExitColors.blue,
 // leading: IconButton(onPressed: (){
 
 // }, icon: Icon(Icons.menu)),
@@ -43,7 +43,7 @@ shape: RoundedRectangleBorder(
           physics: const BouncingScrollPhysics(),
           child: Container(
             decoration: BoxDecoration(
-              color: ExitColors.navy,
+              color: ExitColors.blue,
               // border: Border.all(color: ExitColors.textHint),
               // borderRadius: BorderRadius.circular(40),
             ),
@@ -54,7 +54,7 @@ shape: RoundedRectangleBorder(
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 16,
+                  itemCount: 10,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                     crossAxisSpacing: 10,
@@ -63,7 +63,7 @@ shape: RoundedRectangleBorder(
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: BoxDecoration(
-                        color: ExitColors.navy,
+                        color: ExitColors.blue,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
@@ -116,7 +116,7 @@ shape: RoundedRectangleBorder(
                       decoration: BoxDecoration
                       (
 
-                      color:ExitColors.green,
+                      color:ExitColors.blue,
                         borderRadius: BorderRadius.circular(10)
                         
                       ),
@@ -133,7 +133,7 @@ shape: RoundedRectangleBorder(
           ),
         ),
       ),
-      backgroundColor: ExitColors.border,
+      backgroundColor: ExitColors.blue,
     );
   }
 }
