@@ -28,43 +28,39 @@ class OutScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
         ),
+      
       ),
+      
       body: Center(
-        child: SingleChildScrollView(
-          physics: const ScrollPhysics(),
-          child: Container(
-            decoration: BoxDecoration(
-              color: ExitColors.blue,
-              // border: Border.all(color: ExitColors.textHint),
-              // borderRadius: BorderRadius.circular(40),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 11),
+        child: Container(
 
-            child: Column(
-              children: [
-                ListView.builder(
-                  itemCount: item.length,
-                  // scrollDirection: BouncingScrollPhysics(),
-                  padding: EdgeInsets.all(10),
-                  itemExtent: 70,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 4,
-                      margin: EdgeInsets.symmetric(vertical: 5),
-                      child: ListTile(
-                        leading: CircleAvatar(child: Text("${index + 1}")),
-                        title: Text("${item[index]}"),
-                        subtitle: Text("This is a subtitle"),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                        onTap: () {
-                          print('Clicked ${item[index]}');
-                        },
-                      ),
-                    );
+          decoration: BoxDecoration(
+            color: ExitColors.blue,
+            // border: Border.all(color: ExitColors.textHint),
+            // borderRadius: BorderRadius.circular(40),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 60, horizontal: 11),
+        
+          child: ListView.builder(
+            itemCount: item.length,
+            // scrollDirection: BouncingScrollPhysics(),
+            padding: EdgeInsets.all(10),
+            itemExtent: 70,
+            itemBuilder: (context, index) {
+              return Card(
+                elevation: 4,
+                margin: EdgeInsets.symmetric(vertical: 5),
+                child: ListTile(
+                  leading: CircleAvatar(child: Text("${index + 1}")),
+                  title: Text("${item[index]}"),
+                  subtitle: Text("This is a subtitle"),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    print('Clicked ${item[index]}');
                   },
                 ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),
