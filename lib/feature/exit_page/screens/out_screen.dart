@@ -7,37 +7,26 @@ class OutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Title Page',
-style: TextStyle(color:ExitColors.blue),
-)
-,
-centerTitle: true,
-backgroundColor: ExitColors.blue,
-// leading: IconButton(onPressed: (){
+      appBar: AppBar(
+        title: Text('Title Page', style: TextStyle(color: ExitColors.blue)),
+        centerTitle: true,
+        backgroundColor: ExitColors.blue,
 
-// }, icon: Icon(Icons.menu)),
+        // leading: IconButton(onPressed: (){
 
-
-actions: [
-  IconButton(icon: Icon(Icons.search),
-  onPressed: (){},),
-IconButton(onPressed: (){}, icon: Icon(Icons.account_balance_outlined))
-
-
-],
-elevation: 0.7,
-shape: RoundedRectangleBorder(
-  borderRadius: BorderRadius.vertical(
-    bottom:Radius.circular(20),
-  )
-),
-
-
-
-
-
-
-),
+        // }, icon: Icon(Icons.menu)),
+        actions: [
+          IconButton(icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.account_balance_outlined),
+          ),
+        ],
+        elevation: 0.7,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           physics: const ScrollPhysics(),
@@ -51,81 +40,25 @@ shape: RoundedRectangleBorder(
 
             child: Column(
               children: [
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                ListView.builder(
                   itemCount: 10,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
+                  // scrollDirection: BouncingScrollPhysics(),
+                  padding: EdgeInsets.all(10),
+                  itemExtent: 70,
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: ExitColors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "ICON $index",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                    return Card(
+                      elevation: 4,
+                      margin: EdgeInsets.symmetric(vertical: 5),
+                      child: ListTile(
+                        leading: CircleAvatar(child: Text("${index + 1}")),
+                        title: Text("$index"),
+                        subtitle: Text("This is a subtitle"),
+                        trailing: Icon(Icons.arrow_forward_ios),
+                        onTap: () {
+                          print('Clicked ${index}');
+                        },
                       ),
                     );
-                  },
-                ),
-
-
-
-
-
-
-
-
-
-
-
-                // Container(
-                //   child: GestureDetector(
-                //     onTap: () {},
-                //     child: Text(
-                //       'Out Screen Button',
-                //       style: TextStyle(
-                //         color: ExitColors.autoBadgeBg,
-                //         fontWeight: FontWeight.bold,
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: 8,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10
-
-                  ),
-                  itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration
-                      (
-
-                      color:ExitColors.blue,
-                        borderRadius: BorderRadius.circular(10)
-                        
-                      ),
-                      child: Center(child: Text("Item $index",
-                      style: TextStyle(fontSize: 14,
-                      fontWeight: FontWeight.bold),)),
-
-                    );
-
                   },
                 ),
               ],
