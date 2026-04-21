@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/exit_theme.dart';
 
 class OutScreen extends StatelessWidget {
+
   const OutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List item = ["pen","laptop","pencil","football","mobile"];
     return Scaffold(
       appBar: AppBar(
         title: Text('Title Page', style: TextStyle(color: ExitColors.blue)),
@@ -41,7 +43,7 @@ class OutScreen extends StatelessWidget {
             child: Column(
               children: [
                 ListView.builder(
-                  itemCount: 10,
+                  itemCount: item.length,
                   // scrollDirection: BouncingScrollPhysics(),
                   padding: EdgeInsets.all(10),
                   itemExtent: 70,
@@ -51,11 +53,11 @@ class OutScreen extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 5),
                       child: ListTile(
                         leading: CircleAvatar(child: Text("${index + 1}")),
-                        title: Text("$index"),
+                        title: Text("${item[index]}"),
                         subtitle: Text("This is a subtitle"),
                         trailing: Icon(Icons.arrow_forward_ios),
                         onTap: () {
-                          print('Clicked ${index}');
+                          print('Clicked ${item[index]}');
                         },
                       ),
                     );
