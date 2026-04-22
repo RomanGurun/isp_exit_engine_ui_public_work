@@ -11,9 +11,9 @@ class OutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Title Page', style: TextStyle(color: ExitColors.blue)),
+        title: Text('Title Page', style: TextStyle(color: ExitColors.g8)),
         centerTitle: true,
-        backgroundColor: ExitColors.blue,
+        backgroundColor: ExitColors.g8,
 
         // leading: IconButton(onPressed: (){
 
@@ -55,7 +55,7 @@ class OutScreen extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: ExitColors.border,
+      backgroundColor: ExitColors.g8,
     );
   }
 }
