@@ -40,10 +40,16 @@ class OutScreen extends StatelessWidget {
           itemExtent: 70,
           itemBuilder: (context, index) {
             return Card(
+              color: ExitColors.green,
               elevation: 4,
               margin: EdgeInsets.symmetric(vertical: 5),
               child: ListTile(
-                leading: CircleAvatar(child: Text("${index + 1}")),
+                // iconColor: ExitColors.g8,
+                textColor: ExitColors.pureBlack,
+                
+                leading: CircleAvatar(child: Text("${index + 1}"),
+                backgroundColor: ExitColors.pureBlack,
+                foregroundColor: ExitColors.amber),
                 title: Text("${item[index]}"),
                 subtitle: Text("This is a subtitle"),
                 trailing: Icon(Icons.arrow_forward_ios),
@@ -55,7 +61,7 @@ class OutScreen extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: ExitColors.g8,
+      backgroundColor: ExitColors.pureWhite,
     );
   }
 }
