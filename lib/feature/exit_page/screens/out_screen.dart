@@ -5,7 +5,7 @@ class OutScreen extends StatelessWidget {
 
    OutScreen({super.key});
 
-  final List item = ["pen", "laptop", "pencil", "football", "mobile"];
+  final List item = ["pen", "laptop", "pencil", "football", "mobile","bike","house","cash","bag","bottle",'chair','table'];
   
   @override
   Widget build(BuildContext context) {
