@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/exit_theme.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_form_screen.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart';
+import 'package:isp_exit_form_implementation/feature/exit_page/screens/qr_installation.dart';
 
 class OutScreen extends StatelessWidget {
   OutScreen({super.key});
@@ -19,6 +20,7 @@ class OutScreen extends StatelessWidget {
     "bottle",
     'chair',
     'table',
+    "rounded"
   ];
   final List<IconData> icon = [
     Icons.mobile_off_outlined,
@@ -33,6 +35,7 @@ class OutScreen extends StatelessWidget {
     Icons.safety_check,
     Icons.safety_check,
     Icons.safety_check,
+    Icons.dangerous_rounded
   ];
 
   @override
@@ -50,15 +53,18 @@ class OutScreen extends StatelessWidget {
 
         // }, icon: Icon(Icons.menu)),
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(
-            onPressed: () {
+          IconButton(icon: Icon(Icons.qr_code_scanner), onPressed: () {
+
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const ExitFormScreen(),
-                ),
+                MaterialPageRoute(builder: (context) => const Scanner()),
               );
+
+
+
+          }),
+          IconButton(
+            onPressed: () {
             },
             icon: Icon(Icons.home),
           ),
