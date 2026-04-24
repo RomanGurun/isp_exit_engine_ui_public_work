@@ -385,7 +385,7 @@ class _ResultSheet extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
+                        backgroundColor: Colors.green,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
@@ -443,7 +443,7 @@ class _ScannerOverlay extends StatelessWidget {
                 height: cutoutSize,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: Colors.green.withOpacity(0.25),
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
@@ -469,7 +469,7 @@ class _CornerPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.blueAccent
+      ..color = Colors.green
       ..strokeWidth = 4
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
