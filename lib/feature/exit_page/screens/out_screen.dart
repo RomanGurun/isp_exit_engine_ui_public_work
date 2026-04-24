@@ -31,11 +31,12 @@ class OutScreen extends StatelessWidget {
     Icons.dangerous,
     Icons.air_rounded,
     Icons.safety_check,
-    Icons.safety_check,
-    Icons.safety_check,
-    Icons.safety_check,
-    Icons.safety_check,
-    Icons.dangerous_rounded
+    Icons.sports_basketball,
+    Icons.satellite_alt_sharp,
+    Icons.safety_divider_sharp,
+    Icons.table_bar_rounded,
+    Icons.dangerous_rounded,
+
   ];
 
   @override
