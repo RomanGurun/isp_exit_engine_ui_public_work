@@ -100,69 +100,78 @@ class OutScreen extends StatelessWidget {
       //       );
       //     },
       // ),
-      body: Container(
-        margin: EdgeInsets.only(top:10,left:10,right:10,bottom:10),
-       padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-       
-        borderRadius:   BorderRadius.circular(10),
-        border:Border.all(
-          color: const Color.fromRGBO(59, 109, 17, 1),
-          width: 3,
-        )
-          ),
-        child: GridView.builder(
-          itemCount: icon.length,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-        
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 1,
-          ),
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                print("Tapped on ${items[index]}");
-              },
-              child: Card(
-                color: ExitColors.g8,
-                elevation: 4,
-                // margin: EdgeInsets.only(top:10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: ExitColors.g8, width: 2.5),
-                            color: ExitColors.pureWhite,
+      body: Column(
+        children:[ Container(
+          margin: EdgeInsets.only(top:10,left:10,right:10,bottom:10),
+         padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+         
+          borderRadius:   BorderRadius.circular(10),
+          border:Border.all(
+            color: const Color.fromRGBO(59, 109, 17, 1),
+            width: 3,
+          )
+            ),
+          child: GridView.builder(
+            itemCount: icon.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+          
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 1,
+            ),
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  print("Tapped on ${items[index]}");
+                },
+                child: Card(
+                  color: ExitColors.g8,
+                  elevation: 4,
+                  // margin: EdgeInsets.only(top:10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: ExitColors.g8, width: 2.5),
+                              color: ExitColors.pureWhite,
+                        ),
+                        child: Icon(
+                          icon[index],
+                          size: 30,
+                          color: ExitColors.pureBlack,
+          
+                        ),
                       ),
-                      child: Icon(
-                        icon[index],
-                        size: 30,
-                        color: ExitColors.pureBlack,
-        
+                    const SizedBox(height: 10,),
+                      Text(
+                        "${items[index]}",
+                        style: TextStyle(
+                          color: ExitColors.pureWhite,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
                       ),
-                    ),
-                  const SizedBox(height: 10,),
-                    Text(
-                      "${items[index]}",
-                      style: TextStyle(
-                        color: ExitColors.pureWhite,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
+        SizedBox(height: 20,),
+
+       Text("This is the last page of the exit form. You can add any content here as needed.", style: TextStyle(color: ExitColors.pureBlack, fontSize: 16), textAlign: TextAlign.center,),
+
+
+        ],
+
       ),
 
       backgroundColor: ExitColors.pureWhite,
