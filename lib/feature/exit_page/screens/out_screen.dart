@@ -20,7 +20,7 @@ class OutScreen extends StatelessWidget {
     "bottle",
     'chair',
     'table',
-    "rounded"
+    "rounded",
   ];
   final List<IconData> icon = [
     Icons.mobile_off_outlined,
@@ -36,7 +36,6 @@ class OutScreen extends StatelessWidget {
     Icons.safety_divider_sharp,
     Icons.table_bar_rounded,
     Icons.dangerous_rounded,
-
   ];
 
   @override
@@ -54,21 +53,16 @@ class OutScreen extends StatelessWidget {
 
         // }, icon: Icon(Icons.menu)),
         actions: [
-          IconButton(icon: Icon(Icons.qr_code_scanner), onPressed: () {
-
+          IconButton(
+            icon: Icon(Icons.qr_code_scanner),
+            onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Scanner()),
               );
-
-
-
-          }),
-          IconButton(
-            onPressed: () {
             },
-            icon: Icon(Icons.home),
           ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.home)),
         ],
         elevation: 0.7,
         shape: RoundedRectangleBorder(
@@ -101,77 +95,93 @@ class OutScreen extends StatelessWidget {
       //     },
       // ),
       body: Column(
-        children:[ Container(
-          margin: EdgeInsets.only(top:10,left:10,right:10,bottom:10),
-         padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-         
-          borderRadius:   BorderRadius.circular(10),
-          border:Border.all(
-            color: const Color.fromRGBO(59, 109, 17, 1),
-            width: 3,
-          )
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: const Color.fromRGBO(59, 109, 17, 1),
+                width: 3,
+              ),
             ),
-          child: GridView.builder(
-            itemCount: icon.length,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-          
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1,
-            ),
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  print("Tapped on ${items[index]}");
-                },
-                child: Card(
-                  color: ExitColors.g8,
-                  elevation: 4,
-                  // margin: EdgeInsets.only(top:10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: ExitColors.g8, width: 2.5),
-                              color: ExitColors.pureWhite,
+            child: GridView.builder(
+              itemCount: icon.length,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1,
+              ),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    print("Tapped on ${items[index]}");
+                  },
+                  child: Card(
+                    color: ExitColors.g8,
+                    elevation: 4,
+                    // margin: EdgeInsets.only(top:10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: ExitColors.g8,
+                              width: 2.5,
+                            ),
+                            color: ExitColors.pureWhite,
+                          ),
+                          child: Icon(
+                            icon[index],
+                            size: 30,
+                            color: ExitColors.pureBlack,
+                          ),
                         ),
-                        child: Icon(
-                          icon[index],
-                          size: 30,
-                          color: ExitColors.pureBlack,
-          
+                        const SizedBox(height: 10),
+                        Text(
+                          "${items[index]}",
+                          style: TextStyle(
+                            color: ExitColors.pureWhite,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                    const SizedBox(height: 10,),
-                      Text(
-                        "${items[index]}",
-                        style: TextStyle(
-                          color: ExitColors.pureWhite,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-        SizedBox(height: 20,),
+          SizedBox(height: 20),
 
-       Text("Grid View Items Displayed on the screen", style: TextStyle(color: ExitColors.pureBlack, fontSize: 16), textAlign: TextAlign.center,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
 
+            children: [
+              Text(
+                "Grid View Items Displayed on the screen",
+                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(width: 10),
 
+              Text(
+                "Grid View Items Approved on the screen",
+                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ],
-
       ),
 
       backgroundColor: ExitColors.pureWhite,
