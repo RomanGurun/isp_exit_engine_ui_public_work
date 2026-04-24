@@ -179,6 +179,25 @@ class OutScreen extends StatelessWidget {
                 style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
+SizedBox(height: 20),
+Column(
+  children: [
+            Text(
+                "Column Items Displayed on the screen",
+                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(width: 10),
+
+              Text(
+                "Column Items Approved on the screen",
+                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+
+],)
+
+
             ],
           ),
         ],
