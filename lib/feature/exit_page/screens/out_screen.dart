@@ -167,7 +167,7 @@ class OutScreen extends StatelessWidget {
         ),
         SizedBox(height: 20,),
 
-       Text("This is the last page of the exit form. You can add any content here as needed.", style: TextStyle(color: ExitColors.pureBlack, fontSize: 16), textAlign: TextAlign.center,),
+       Text("Grid View Items Displayed on the screen", style: TextStyle(color: ExitColors.pureBlack, fontSize: 16), textAlign: TextAlign.center,),
 
 
         ],
