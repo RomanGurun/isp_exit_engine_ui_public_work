@@ -165,8 +165,11 @@ class OutScreen extends StatelessWidget {
               },
             ),
           ),
+
           SizedBox(height: 20),
 
+
+// ===============================Row Widget ====================================
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
 
@@ -184,6 +187,7 @@ class OutScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
 SizedBox(height: 20),
+
 Column(
   children: [
             Text(
@@ -219,6 +223,65 @@ Column(
 
             ],
           ),
+
+
+// ===============================Row Widget ====================================
+
+
+// ===============================Row Widget ====================================
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              Text(
+                "Grid View Items Displayed on the screen",
+                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(width: 10),
+
+              Text(
+                "Grid View Items Approved on the screen",
+                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
+
+              Column(
+                children: [
+                  Text(
+                    "Column Items Displayed on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: 10),
+
+                  Text(
+                    "Column Items Approved on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+
+                  Text(
+                    "Extra Items Approved on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+
+
+
+
+// ===============================Row Widget ====================================
+
+
+
+
         ],
       ),
 
