@@ -47,7 +47,7 @@ class OutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Title Page',
+          'Final Page',
           style: TextStyle(color: ExitColors.pureBlack),
         ),
         centerTitle: true,
