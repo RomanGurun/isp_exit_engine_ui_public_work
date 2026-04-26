@@ -21,6 +21,8 @@ class OutScreen extends StatelessWidget {
     'chair',
     'table',
     "rounded",
+    "money",
+    "pet animal"
   ];
   final List<IconData> icon = [
     Icons.mobile_off_outlined,
