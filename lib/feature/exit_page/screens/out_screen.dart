@@ -58,7 +58,7 @@ class OutScreen extends StatelessWidget {
         // }, icon: Icon(Icons.menu)),
         actions: [
           IconButton(
-            icon: Icon(Icons.qr_code_scanner),
+            icon: Icon(Icons.qr_code_2),
             onPressed: () {
               Navigator.push(
                 context,
