@@ -38,6 +38,8 @@ class OutScreen extends StatelessWidget {
     Icons.safety_divider_sharp,
     Icons.table_bar_rounded,
     Icons.dangerous_rounded,
+     Icons.monetization_on,
+     Icons.widgets
   ];
 
   @override
