@@ -198,6 +198,21 @@ Column(
                 style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
+                  SizedBox(height: 10),
+
+
+                  Text(
+                    "Extra Items Approved on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+
+
+
+
+
+
+
 
 ],)
 
