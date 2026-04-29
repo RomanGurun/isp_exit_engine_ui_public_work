@@ -270,6 +270,41 @@ Column(
                   ),
                 ],
               ),
+
+
+              SizedBox(height: 20),
+
+
+// ===============================COLUMN============================================
+
+              Column(
+                children: [
+                  Text(
+                    "Column Items Displayed on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: 10),
+
+                  Text(
+                    "Column Items Approved on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+
+                  Text(
+                    "Extra Items Approved on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+// ===============================COLUMN============================================
+
+
+
+
             ],
           ),
 
