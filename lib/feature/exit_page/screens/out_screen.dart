@@ -325,7 +325,9 @@ Column(
 
 
 
+GestureDetector(onDoubleTap: (){
 
+},child: Text("Tap"),)
 
 // ===============================Row Widget ====================================
 
