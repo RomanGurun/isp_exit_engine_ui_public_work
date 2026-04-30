@@ -250,14 +250,14 @@ Column(
               Column(
                 children: [
                   Text(
-                    "Column Items Displayed on the screen",
+                    "Equipment Displayed on the screen",
                     style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(width: 10),
 
                   Text(
-                    "Column Items Approved on the screen",
+                    "Equipment Items Approved on the screen",
                     style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
