@@ -277,43 +277,46 @@ Column(
 
 // ===============================COLUMN============================================
 
-              Column(
-                children: [
-                  Text(
-                    "First Column Items Displayed on the screen",
-                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  Text(
-                    "Second Column Items Displayed on the screen",
-                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  SizedBox(height: 10),
-
-                  Text(
-                    "Third Column Items Displayed on the screen",
-                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  SizedBox(width: 10),
-
-                  Text(
-                    "Fourth Column Items Displayed on the screen",
-                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 10),
-
-                  Text(
-                    "Extra Items Approved on the screen",
-                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Column(
+                  children: [
+                    Text(
+                      "First Column Items Displayed on the screen",
+                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                
+                    Text(
+                      "Second Column Items Displayed on the screen",
+                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                
+                    SizedBox(height: 10),
+                
+                    Text(
+                      "Third Column Items Displayed on the screen",
+                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                
+                    SizedBox(width: 10),
+                
+                    Text(
+                      "Fourth Column Items Displayed on the screen",
+                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 10),
+                
+                    Text(
+                      "Extra Items Approved on the screen",
+                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
 // ===============================COLUMN============================================
 
