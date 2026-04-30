@@ -230,6 +230,7 @@ Column(
 
 // ===============================Row Widget ====================================
           Container(
+padding: EdgeInsets.all(10),
 
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
