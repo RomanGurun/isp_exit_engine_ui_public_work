@@ -234,14 +234,14 @@ Column(
 
             children: [
               Text(
-                "Grid View Items Displayed on the screen",
+                "Instruction screen Displayed on the screen",
                 style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               SizedBox(width: 10),
 
               Text(
-                "Grid View Items Approved on the screen",
+                "ISP Exit Form Instructions Screen",
                 style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
