@@ -294,6 +294,7 @@ class OutScreen extends StatelessWidget {
                         onTap: () {
                           print('doub');
                         },
+                        child: Text('add'),
                       ),
 
 SizedBox(height: 10,),
@@ -313,7 +314,7 @@ SizedBox(height: 10,),
                         onTap: () {
                           print('doub');
                         },
-                      ),
+                      child: Text('add'),),
 
 
 SizedBox(height: 10),
