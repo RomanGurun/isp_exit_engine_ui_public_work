@@ -22,7 +22,7 @@ class OutScreen extends StatelessWidget {
     'table',
     "rounded",
     "money",
-    "pet animal"
+    "pet animal",
   ];
   final List<IconData> icon = [
     Icons.mobile_off_outlined,
@@ -38,8 +38,8 @@ class OutScreen extends StatelessWidget {
     Icons.safety_divider_sharp,
     Icons.table_bar_rounded,
     Icons.dangerous_rounded,
-     Icons.monetization_on,
-     Icons.widgets
+    Icons.monetization_on,
+    Icons.widgets,
   ];
 
   @override
@@ -168,8 +168,7 @@ class OutScreen extends StatelessWidget {
 
           SizedBox(height: 20),
 
-
-// ===============================Row Widget ====================================
+          // ===============================Row Widget ====================================
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
 
@@ -186,63 +185,48 @@ class OutScreen extends StatelessWidget {
                 style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
-SizedBox(height: 20),
+              SizedBox(height: 20),
 
-Column(
-  children: [
-            Text(
-                "Column Items Displayed on the screen",
-                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(width: 10),
+              Column(
+                children: [
+                  Text(
+                    "Column Items Displayed on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: 10),
 
-              Text(
-                "Column Items Approved on the screen",
-                style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
+                  Text(
+                    "Column Items Approved on the screen",
+                    style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
                   SizedBox(height: 10),
-
 
                   Text(
                     "Extra Items Approved on the screen",
                     style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
-
-
-
-
-
-
-
-
-],)
-
-
+                ],
+              ),
             ],
           ),
 
+          // ===============================Row Widget ====================================
 
-// ===============================Row Widget ====================================
-
-
-// ===============================Row Widget ====================================
+          // ===============================Row Widget ====================================
           Container(
-padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
 
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: ExitColors.g8,
-                width: 2.5,
-              ),
+              border: Border.all(color: ExitColors.g8, width: 2.5),
               color: ExitColors.g8,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-            
+
               children: [
                 Text(
                   "Instruction screen Displayed on the screen",
@@ -250,105 +234,131 @@ padding: EdgeInsets.all(10),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(width: 10),
-            
+
                 Text(
                   "ISP Exit Form Instructions Screen",
                   style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 20),
-            
+
                 Column(
                   children: [
                     Text(
                       "Equipment Displayed on the screen",
-                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      style: TextStyle(
+                        color: ExitColors.pureBlack,
+                        fontSize: 16,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(width: 10),
-            
+
                     Text(
                       "Equipment Items Approved on the screen",
-                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      style: TextStyle(
+                        color: ExitColors.pureBlack,
+                        fontSize: 16,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 10),
-            
+
                     Text(
                       "Extra Items Approved on the screen",
-                      style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                      style: TextStyle(
+                        color: ExitColors.pureBlack,
+                        fontSize: 16,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ],
                 ),
-            
-            
+
                 SizedBox(height: 20),
-            
-            
-            // ===============================COLUMN============================================
-            
+
+                // ===============================COLUMN============================================
                 Padding(
                   padding: EdgeInsets.only(top: 10),
                   child: Column(
                     children: [
                       Text(
                         "First Column Items Displayed on the screen",
-                        style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                        style: TextStyle(
+                          color: ExitColors.pureBlack,
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.center,
                       ),
-                  
+                      GestureDetector(
+                        onTap: () {
+                          print('doub');
+                        },
+                      ),
+
+
                       Text(
                         "Second Column Items Displayed on the screen",
-                        style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                        style: TextStyle(
+                          color: ExitColors.pureBlack,
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.center,
                       ),
-                  
+
                       SizedBox(height: 10),
-                  
+
+
+                      GestureDetector(
+                        onTap: () {
+                          print('doub');
+                        },
+                      ),
+
+
+
+
                       Text(
                         "Third Column Items Displayed on the screen",
-                        style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                        style: TextStyle(
+                          color: ExitColors.pureBlack,
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.center,
                       ),
-                  
+
                       SizedBox(width: 10),
-                  
+
                       Text(
                         "Fourth Column Items Displayed on the screen",
-                        style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                        style: TextStyle(
+                          color: ExitColors.pureBlack,
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 10),
-                  
+
                       Text(
                         "Extra Items Approved on the screen",
-                        style: TextStyle(color: ExitColors.pureBlack, fontSize: 16),
+                        style: TextStyle(
+                          color: ExitColors.pureBlack,
+                          fontSize: 16,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
                 ),
-            // ===============================COLUMN============================================
-            
-            
-            
-            
+
+                // ===============================COLUMN============================================
               ],
             ),
           ),
 
+          GestureDetector(onDoubleTap: () {}, child: Text("Tap")),
 
-
-GestureDetector(onDoubleTap: (){
-
-},child: Text("Tap"),)
-
-// ===============================Row Widget ====================================
-
-
-
-
+          // ===============================Row Widget ====================================
         ],
       ),
 
