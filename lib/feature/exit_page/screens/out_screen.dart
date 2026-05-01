@@ -296,7 +296,7 @@ class OutScreen extends StatelessWidget {
                         },
                       ),
 
-
+SizedBox(height: 10,),
                       Text(
                         "Second Column Items Displayed on the screen",
                         style: TextStyle(
@@ -316,6 +316,7 @@ class OutScreen extends StatelessWidget {
                       ),
 
 
+SizedBox(height: 10),
 
 
                       Text(
