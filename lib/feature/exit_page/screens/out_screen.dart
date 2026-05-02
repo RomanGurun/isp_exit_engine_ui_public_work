@@ -359,7 +359,16 @@ SizedBox(height: 10),
           ),
 
           GestureDetector(onDoubleTap: () {}, child: Text("Tap")),
+          //======================= ListView===============
 
+  ListView.builder(
+    itemCount: 10,
+    itemBuilder: (context, index) {
+      return Text('Item $index');
+    },
+  ),
+
+  //======================= ListView===============
           // ===============================Row Widget ====================================
         ],
       ),
