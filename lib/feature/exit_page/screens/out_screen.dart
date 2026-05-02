@@ -368,6 +368,18 @@ SizedBox(height: 10),
     },
   ),
 
+SizedBox(height: 10),
+
+GridView.builder(
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+  ),
+  itemBuilder: (context, index) {
+    return Text('Grid item $index');
+  },
+),
+
+
   //======================= ListView===============
           // ===============================Row Widget ====================================
         ],
