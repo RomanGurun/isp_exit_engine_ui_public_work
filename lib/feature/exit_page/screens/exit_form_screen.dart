@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'exit_page_employee_info.dart';
 import 'exit_page_ratings.dart';
 import 'exit_page_feedback.dart';
-import 'out_screen.dart';
+import '../../mini_page/out_screen.dart';
 
 class ExitFormScreen extends StatefulWidget {
   const ExitFormScreen({super.key});
