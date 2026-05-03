@@ -397,7 +397,7 @@ IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  OutExitForm()),
+                MaterialPageRoute(builder: (context) =>  RegisterFormPage()),
               );
             },
           ),
