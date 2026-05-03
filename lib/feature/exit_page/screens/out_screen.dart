@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/exit_theme.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_form_screen.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart';
+import 'package:isp_exit_form_implementation/feature/exit_page/screens/out_form_screen.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/qr_installation.dart';
 
 class OutScreen extends StatelessWidget {
@@ -380,8 +381,27 @@ GridView.builder(
 ),
 
 
+
   //======================= ListView===============
+
+
+
+
+
           // ===============================Row Widget ====================================
+
+// ==============================Routing =====================
+
+IconButton(
+            icon: Icon(Icons.navigate_next_sharp,size: 40,),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  OutExitForm()),
+              );
+            },
+          ),
+
         ],
       ),
 
