@@ -1,21 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-
-// void main() => runApp(const MyApp());
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Sliding Page UI',
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(fontFamily: 'serif'),
-//       home: const SlidingPageUI(),
-//     );
-//   }
-// }
+import 'package:isp_exit_form_implementation/feature/mini_page/out_screen.dart';
 
 // ─── Slide Data ───────────────────────────────────────────────────────────────
 
@@ -134,15 +119,34 @@ class _SlidingPageUIState extends State<SlidingPageUI> {
 
   @override
   Widget build(BuildContext context) {
+    // FIX: Use MediaQuery so the slider height fits the screen properly
+    final screenHeight = MediaQuery.of(context).size.height;
+    final sliderHeight = screenHeight * 0.65;
+
     return Scaffold(
+      appBar: AppBar(title: const Text('Sliding Page',
+      style: TextStyle(color:Colors.white),), backgroundColor: Colors.transparent, elevation: 0,
+      
+       automaticallyImplyLeading: false,
+       
+      actions: [
+        IconButton(onPressed: (){
+   Navigator.push(context,MaterialPageRoute(builder: (context) => OutScreen()));
+
+        }, icon: Icon(Icons.exit_to_app, color: Colors.white,)) ,
+      ],
+      
+      // iconTheme: const IconThemeData(color: Colors.white), // ✅ changes back arrow color
+      
+      ),
       backgroundColor: const Color(0xFF111111),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: SizedBox(
-              height: 520,
+              height: sliderHeight,
               child: Stack(
                 children: [
                   PageView.builder(
@@ -158,7 +162,7 @@ class _SlidingPageUIState extends State<SlidingPageUI> {
 
                   // ── Pagination dots ──────────────────────────────────────
                   Positioned(
-                    bottom: 20,
+                    bottom: 16,
                     left: 0,
                     right: 0,
                     child: Row(
@@ -183,7 +187,7 @@ class _SlidingPageUIState extends State<SlidingPageUI> {
 
                   // ── Arrow: previous ──────────────────────────────────────
                   Positioned(
-                    left: 16,
+                    left: 12,
                     top: 0,
                     bottom: 0,
                     child: Center(
@@ -203,7 +207,7 @@ class _SlidingPageUIState extends State<SlidingPageUI> {
 
                   // ── Arrow: next ──────────────────────────────────────────
                   Positioned(
-                    right: 16,
+                    right: 12,
                     top: 0,
                     bottom: 0,
                     child: Center(
@@ -245,108 +249,182 @@ class _SlideView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Left: text panel
-        Expanded(
-          child: Container(
-            color: data.bgText,
-            padding: const EdgeInsets.all(48),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          data.tag,
-                          style: const TextStyle(
-                            fontSize: 11,
-                            letterSpacing: 2.5,
-                            color: Colors.white60,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Text(
-                          '0${index + 1} / 0$total',
-                          style: const TextStyle(
-                            fontSize: 11,
-                            letterSpacing: 2,
-                            color: Colors.white38,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 28),
-                    RichText(
-                      text: TextSpan(
-                        style: const TextStyle(
-                          fontSize: 38,
-                          height: 1.15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        children: [
-                          TextSpan(text: data.title),
-                          TextSpan(
-                            text: data.titleItalic,
-                            style: const TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      data.body,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        height: 1.75,
-                        color: Colors.white54,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    const SizedBox(height: 28),
-                    Row(
-                      children: [
-                        _CtaButton(label: data.cta),
-                        const SizedBox(width: 20),
-                        Text(
-                          data.ghost,
-                          style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.white38,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.white24,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
+    // FIX: Use LayoutBuilder to switch between side-by-side (wide) and
+    // stacked (narrow/mobile) layouts automatically
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isWide = constraints.maxWidth > 600;
 
-        // Right: visual panel
-        Expanded(
-          child: Container(
-            color: data.bgVisual,
-            child: Center(child: data.visual),
+        if (isWide) {
+          // ── Wide layout: text left, visual right ────────────────────────
+          return Row(
+            children: [
+              Expanded(
+                child: _TextPanel(
+                  data: data,
+                  index: index,
+                  total: total,
+                  padding: const EdgeInsets.all(40),
+                  titleSize: 34,
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: data.bgVisual,
+                  child: Center(child: data.visual),
+                ),
+              ),
+            ],
+          );
+        } else {
+          // ── Narrow layout: visual top, text bottom ──────────────────────
+          return Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  color: data.bgVisual,
+                  width: double.infinity,
+                  child: Center(child: data.visual),
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: _TextPanel(
+                  data: data,
+                  index: index,
+                  total: total,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 20,
+                  ),
+                  titleSize: 26,
+                ),
+              ),
+            ],
+          );
+        }
+      },
+    );
+  }
+}
+
+// ─── Text Panel (reused for both layouts) ─────────────────────────────────────
+
+class _TextPanel extends StatelessWidget {
+  final SlideData data;
+  final int index;
+  final int total;
+  final EdgeInsets padding;
+  final double titleSize;
+
+  const _TextPanel({
+    required this.data,
+    required this.index,
+    required this.total,
+    required this.padding,
+    required this.titleSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: data.bgText,
+      padding: padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // ── Top: tag + slide number ──────────────────────────────────────
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Text(
+                      data.tag,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        letterSpacing: 2.5,
+                        color: Colors.white60,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '0${index + 1} / 0$total',
+                    style: const TextStyle(
+                      fontSize: 11,
+                      letterSpacing: 2,
+                      color: Colors.white38,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              // FIX: titleSize is passed in so it scales down on mobile
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    fontSize: titleSize,
+                    height: 1.15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: [
+                    TextSpan(text: data.title),
+                    TextSpan(
+                      text: data.titleItalic,
+                      style: const TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+
+          // ── Bottom: body + buttons ───────────────────────────────────────
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                data.body,
+                style: const TextStyle(
+                  fontSize: 13,
+                  height: 1.75,
+                  color: Colors.white54,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              const SizedBox(height: 20),
+              // FIX: Wrap so buttons don't overflow on tiny screens
+              Wrap(
+                spacing: 16,
+                runSpacing: 8,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  _CtaButton(label: data.cta),
+                  Text(
+                    data.ghost,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.white38,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.white24,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -385,7 +463,7 @@ class _CtaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(100),
@@ -448,8 +526,8 @@ class _OrbVisualState extends State<OrbVisual>
           child: Transform.scale(
             scale: scale,
             child: Container(
-              width: 200,
-              height: 200,
+              width: 140,
+              height: 140,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: const RadialGradient(
@@ -459,8 +537,8 @@ class _OrbVisualState extends State<OrbVisual>
                 boxShadow: [
                   BoxShadow(
                     color: const Color(0xFF8b5cf6).withOpacity(0.35),
-                    blurRadius: 80,
-                    spreadRadius: 10,
+                    blurRadius: 60,
+                    spreadRadius: 8,
                   ),
                 ],
               ),
@@ -510,20 +588,22 @@ class _GeoVisualState extends State<GeoVisual>
     final delays = [0.0, 0.15, 0.08, 0.25];
 
     return SizedBox(
-      width: 180,
-      height: 180,
+      width: 140,
+      height: 140,
       child: GridView.count(
         crossAxisCount: 2,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
         physics: const NeverScrollableScrollPhysics(),
         children: List.generate(4, (i) {
           return AnimatedBuilder(
             animation: _ctrl,
             builder: (_, __) {
-              final t = (((_ctrl.value + delays[i]) % 1.0));
-              final scale = 0.9 + 0.1 * (1 - (t - 0.5).abs() * 2).clamp(0, 1);
-              final opacity = 0.7 + 0.3 * (1 - (t - 0.5).abs() * 2).clamp(0, 1);
+              final t = ((_ctrl.value + delays[i]) % 1.0);
+              final scale =
+                  0.9 + 0.1 * (1 - (t - 0.5).abs() * 2).clamp(0.0, 1.0);
+              final opacity =
+                  0.7 + 0.3 * (1 - (t - 0.5).abs() * 2).clamp(0.0, 1.0);
               return Transform.scale(
                 scale: scale,
                 child: Opacity(
@@ -550,7 +630,7 @@ class WaveVisual extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(size: const Size(240, 160), painter: _WavePainter());
+    return CustomPaint(size: const Size(200, 130), painter: _WavePainter());
   }
 }
 
@@ -581,26 +661,27 @@ class _WavePainter extends CustomPainter {
       ..color = teal
       ..style = PaintingStyle.fill;
 
-    // Primary line points
+    final w = size.width;
+    final h = size.height;
+
     final pts = [
-      Offset(0, 120),
-      Offset(40, 90),
-      Offset(80, 110),
-      Offset(120, 60),
-      Offset(160, 80),
-      Offset(200, 30),
-      Offset(240, 50),
+      Offset(0, h * 0.75),
+      Offset(w * 0.167, h * 0.56),
+      Offset(w * 0.333, h * 0.69),
+      Offset(w * 0.5, h * 0.375),
+      Offset(w * 0.667, h * 0.5),
+      Offset(w * 0.833, h * 0.19),
+      Offset(w, h * 0.31),
     ];
 
-    // Secondary line points
     final pts2 = [
-      Offset(0, 140),
-      Offset(40, 125),
-      Offset(80, 135),
-      Offset(120, 100),
-      Offset(160, 115),
-      Offset(200, 80),
-      Offset(240, 90),
+      Offset(0, h * 0.875),
+      Offset(w * 0.167, h * 0.78),
+      Offset(w * 0.333, h * 0.84),
+      Offset(w * 0.5, h * 0.625),
+      Offset(w * 0.667, h * 0.72),
+      Offset(w * 0.833, h * 0.5),
+      Offset(w, h * 0.56),
     ];
 
     final path1 = Path()..moveTo(pts[0].dx, pts[0].dy);
@@ -612,18 +693,15 @@ class _WavePainter extends CustomPainter {
     canvas.drawPath(path2, secondaryPaint);
     canvas.drawPath(path1, primaryPaint);
 
-    // Highlight dots at peaks
     for (final p in [pts[3], pts[5]]) {
-      // vertical dashed line
       double y = p.dy;
-      while (y < size.height) {
+      while (y < h) {
         canvas.drawLine(Offset(p.dx, y), Offset(p.dx, y + 3), dashPaint);
         y += 6;
       }
-      canvas.drawCircle(p, 5, dotPaint);
+      canvas.drawCircle(p, 4, dotPaint);
     }
 
-    // Labels
     final tp = TextPainter(textDirection: TextDirection.ltr);
     void drawLabel(String text, Offset pos) {
       tp.text = TextSpan(
@@ -679,20 +757,21 @@ class _DotsVisualState extends State<DotsVisual>
       animation: _ctrl,
       builder: (_, __) {
         return SizedBox(
-          width: 160,
-          height: 80,
+          width: 140,
+          height: 70,
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: cols,
-              mainAxisSpacing: 14,
-              crossAxisSpacing: 14,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
             ),
             itemCount: cols * rows,
             itemBuilder: (_, i) {
               final delay = i * 0.15;
               final t = ((_ctrl.value + delay) % 1.0);
-              final opacity = 0.2 + 0.8 * (1 - (t - 0.5).abs() * 2).clamp(0, 1);
+              final opacity =
+                  0.2 + 0.8 * (1 - (t - 0.5).abs() * 2).clamp(0.0, 1.0);
               return Opacity(
                 opacity: opacity,
                 child: Container(
