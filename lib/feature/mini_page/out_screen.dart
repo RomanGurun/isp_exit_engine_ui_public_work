@@ -4,6 +4,7 @@ import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_form
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart';
 import 'package:isp_exit_form_implementation/feature/mini_page/out_form_screen.dart';
 import 'package:isp_exit_form_implementation/feature/exit_page/screens/qr_installation.dart';
+import 'package:isp_exit_form_implementation/feature/mini_page/out_sliding_page.dart';
 
 class OutScreen extends StatelessWidget {
   OutScreen({super.key});
@@ -67,7 +68,25 @@ class OutScreen extends StatelessWidget {
               );
             },
           ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+          IconButton(onPressed: () {
+Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterFormPage()));
+
+
+          }, icon: Icon(Icons.format_indent_decrease_outlined)),
+
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SlidingPageUI(),
+                ),
+              );
+            },
+            icon: Icon(Icons.slideshow),
+          ),
+
+
         ],
         elevation: 0.7,
         shape: RoundedRectangleBorder(
