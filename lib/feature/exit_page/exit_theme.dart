@@ -37,6 +37,8 @@ class ExitColors {
 //=============== Text Style========================
 
 class ExitTextStyles {
+  // static get GoogleFonts => null;
+
   static TextStyle label({Color? color}) => GoogleFonts.dmSans(
     fontSize: 10.5,
     fontWeight: FontWeight.bold,

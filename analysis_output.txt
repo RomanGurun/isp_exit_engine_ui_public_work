@@ -1,0 +1,37 @@
+The following plugins do not support Swift Package Manager for ios:
+  - permission_handler_apple
+  - mobile_scanner
+This will become an error in a future version of Flutter. Please contact the plugin maintainers to request Swift Package Manager adoption.
+Analyzing isp_exit_form_implementation...                       
+
+   info • Missing type annotation • lib/core/widgets/show_snackbar.dart:15:10 • strict_top_level_inference
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/show_snackbar.dart:22:60 • deprecated_member_use
+   info • Missing type annotation • lib/core/widgets/show_snackbar.dart:68:10 • strict_top_level_inference
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/show_snackbar.dart:73:60 • deprecated_member_use
+   info • Statements in a for should be enclosed in a block • lib/feature/exit_page/screens/exit_form_screen.dart:149:43 • curly_braces_in_flow_control_structures
+warning • The declaration '_buildPayload' isn't referenced • lib/feature/exit_page/screens/exit_form_screen.dart:170:24 • unused_element
+   info • Invalid use of a private type in a public API • lib/feature/exit_page/screens/exit_page_ratings.dart:17:3 • library_private_types_in_public_api
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/feature/exit_page/screens/qr_installation.dart:232:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/feature/exit_page/screens/qr_installation.dart:286:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/feature/exit_page/screens/qr_installation.dart:337:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/feature/exit_page/screens/qr_installation.dart:428:26 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/feature/exit_page/screens/qr_installation.dart:446:41 • deprecated_member_use
+   info • The import of 'package:flutter/foundation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' • lib/feature/exit_page/widgets/exit_widgets.dart:1:8 • unnecessary_import
+   info • Parameter 'key' could be a super parameter • lib/feature/exit_page/widgets/exit_widgets.dart:188:9 • use_super_parameters
+   info • Invalid use of a private type in a public API • lib/feature/exit_page/widgets/exit_widgets.dart:463:3 • library_private_types_in_public_api
+   info • Invalid use of a private type in a public API • lib/feature/exit_page/widgets/exit_widgets.dart:537:3 • library_private_types_in_public_api
+   info • The member 'build' overrides an inherited member but isn't annotated with '@override' • lib/feature/exit_page/widgets/exit_widgets.dart:682:10 • annotate_overrides
+   info • Invalid use of a private type in a public API • lib/feature/exit_page/widgets/exit_widgets.dart:783:3 • library_private_types_in_public_api
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/feature/mini_page/out_form_screen.dart:162:43 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/feature/mini_page/out_form_screen.dart:258:23 • deprecated_member_use
+   info • Unnecessary use of multiple underscores • lib/feature/mini_page/out_form_screen.dart:388:43 • unnecessary_underscores
+   info • Unnecessary use of multiple underscores • lib/feature/mini_page/out_form_screen.dart:388:47 • unnecessary_underscores
+warning • Unused import: 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_form_screen.dart' • lib/feature/mini_page/out_screen.dart:3:8 • unused_import
+warning • Unused import: 'package:isp_exit_form_implementation/feature/exit_page/screens/exit_page_signature.dart' • lib/feature/mini_page/out_screen.dart:4:8 • unused_import
+   info • Don't invoke 'print' in production code • lib/feature/mini_page/out_screen.dart:129:23 • avoid_print
+   info • Unnecessary use of string interpolation • lib/feature/mini_page/out_screen.dart:156:29 • unnecessary_string_interpolations
+   info • Don't invoke 'print' in production code • lib/feature/mini_page/out_screen.dart:301:31 • avoid_print
+   info • Don't invoke 'print' in production code • lib/feature/mini_page/out_screen.dart:321:31 • avoid_print
+   info • Parameter 'key' could be a super parameter • lib/main.dart:10:9 • use_super_parameters
+
+29 issues found. (ran in 3.3s)
