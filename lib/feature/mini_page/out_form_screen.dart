@@ -371,6 +371,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                         ),
                       ),
                       const Expanded(child: Divider()),
+
+                      const Expanded(child: Divider()),
                     ]),
                     const SizedBox(height: 16),
 
