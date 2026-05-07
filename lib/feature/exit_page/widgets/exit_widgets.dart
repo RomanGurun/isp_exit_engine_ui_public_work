@@ -295,7 +295,7 @@ class ExitNavFooter extends StatelessWidget {
         break;
 
       case ExitNavButtonStyle.success:
-        nextLabel = "✓ Done ";
+        nextLabel = "✓ Finished successfully ";
         nextColor = ExitColors.g8;
         break;
       case ExitNavButtonStyle.normal:
