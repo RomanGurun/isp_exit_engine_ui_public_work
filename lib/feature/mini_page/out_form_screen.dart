@@ -81,7 +81,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
 
   String? _validatePassword(String? val) {
     if (val == null || val.isEmpty) return 'Required';
-    if (val.length < 8) return 'Password must be at least 8 characters';
+    if (val.length < 8) return 'Password must be at least 8 characters ';
     if (!val.contains(RegExp(r'[A-Z]'))) return 'Include at least one uppercase letter';
     if (!val.contains(RegExp(r'\d'))) return 'Include at least one number';
     return null;
@@ -149,7 +149,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Create account',
+                    'Create New account ',
                     style: TextStyle(
                       color: cs.onPrimary,
                       fontSize: 22,
@@ -157,7 +157,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                     ),
                   ),
                   Text(
-                    'Join us today — it\'s free',
+                    'Join us today Now— it\'s free',
                     style: TextStyle(
                       color: cs.onPrimary.withOpacity(0.85),
                       fontSize: 13,
