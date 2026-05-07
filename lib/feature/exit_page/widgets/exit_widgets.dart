@@ -332,7 +332,7 @@ class ExitNavFooter extends StatelessWidget {
                     child: Text(
                       '← Back',
                       style: AppTextStyle.bold(14).copyWith(
-                        color: ExitColors.pureBlack,
+                        color: const Color.fromARGB(255, 132, 28, 28),
                       ),
                     ),
                   ),
