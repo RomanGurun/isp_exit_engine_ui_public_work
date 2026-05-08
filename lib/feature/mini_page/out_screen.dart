@@ -876,7 +876,7 @@ class OutScreen extends StatelessWidget {
             SizedBox(
               height: 400,
               child: GridView.builder(
-                itemCount: 10,
+                itemCount: 13,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
