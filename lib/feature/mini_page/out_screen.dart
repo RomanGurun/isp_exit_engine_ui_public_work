@@ -820,7 +820,22 @@ class OutScreen extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 10),
-
+                          Text(
+                            "Fifth Column Items Displayed on the screen",
+                            style: TextStyle(
+                              color: ExitColors.pureBlack,
+                              fontSize: 16,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                           Text(
+                            "Sixth Column Items Displayed on the screen",
+                            style: TextStyle(
+                              color: ExitColors.pureBlack,
+                              fontSize: 16,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                           Text(
                             "Extra Items Approved on the screen",
                             style: TextStyle(
