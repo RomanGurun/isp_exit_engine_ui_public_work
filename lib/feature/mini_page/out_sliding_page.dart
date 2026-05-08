@@ -124,7 +124,7 @@ class _SlidingPageUIState extends State<SlidingPageUI> {
     final sliderHeight = screenHeight * 0.65;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Sliding Page',
+      appBar: AppBar(title: const Text('Sliding Page User Interface',
       style: TextStyle(color:Colors.white),), backgroundColor: Colors.transparent, elevation: 0,
       
        automaticallyImplyLeading: false,
