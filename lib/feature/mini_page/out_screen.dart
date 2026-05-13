@@ -468,6 +468,7 @@ class OutScreen extends StatelessWidget {
     "rounded",
     "money",
     "pet animal",
+    "Iphone 12 pro max"
   ];
   final List<IconData> icon = [
     Icons.mobile_off_outlined,
@@ -485,6 +486,7 @@ class OutScreen extends StatelessWidget {
     Icons.dangerous_rounded,
     Icons.monetization_on,
     Icons.widgets,
+    Icons.phonelink_setup
   ];
 
   @override
