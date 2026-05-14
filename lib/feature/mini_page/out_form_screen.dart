@@ -152,8 +152,8 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                     'Create New account ',
                     style: TextStyle(
                       color: cs.onPrimary,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
@@ -161,7 +161,7 @@ class _RegisterFormPageState extends State<RegisterFormPage> {
                     style: TextStyle(
                       color: cs.onPrimary.withOpacity(0.85),
                       fontSize: 13,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
