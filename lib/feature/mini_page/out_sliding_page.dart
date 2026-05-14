@@ -173,7 +173,7 @@ class _SlidingPageUIState extends State<SlidingPageUI> {
                           duration: const Duration(milliseconds: 300),
                           margin: const EdgeInsets.symmetric(horizontal: 4),
                           width: active ? 24 : 6,
-                          height: 6,
+                          height: 8,
                           decoration: BoxDecoration(
                             color: active
                                 ? Colors.white
