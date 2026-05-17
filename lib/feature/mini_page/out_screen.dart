@@ -473,6 +473,7 @@ class OutScreen extends StatelessWidget {
   final List<IconData> icon = [
     Icons.mobile_off_outlined,
     Icons.bike_scooter,
+    Icons.sanitizer_sharp,
     Icons.house,
     Icons.ac_unit,
     Icons.access_alarm_sharp,
