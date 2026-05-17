@@ -455,6 +455,7 @@ class OutScreen extends StatelessWidget {
   final List<String> items = [
     "pen",
     "laptop",
+    'safety'
     "pencil",
     "football",
     "mobile",
